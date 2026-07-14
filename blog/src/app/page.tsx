@@ -3,6 +3,7 @@ import Link from "next/link";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
+import { AffiliateLink } from "@/components/conversion/AffiliateLink";
 
 export const metadata: Metadata = {
   description:
@@ -59,12 +60,12 @@ export default function Home() {
             operação all-in-one gratuita — na ponta do lápis, sem achismo.
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <a
-              href="/go/systeme?ref=home-hero"
+            <AffiliateLink
+              refId="home-hero"
               className="rounded-xl bg-[#00B2B2] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#00D1D1]"
             >
               Criar conta grátis na Systeme.io →
-            </a>
+            </AffiliateLink>
             <Link
               href="/calculadora-taxa-de-guru"
               className="rounded-xl border border-white/30 px-6 py-3 font-semibold text-white transition-colors hover:border-[#00D1D1] hover:text-[#00D1D1]"

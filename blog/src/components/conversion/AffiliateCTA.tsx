@@ -1,4 +1,4 @@
-import { goSysteme } from "@/lib/afiliado";
+import { AffiliateLink } from "@/components/conversion/AffiliateLink";
 
 type Variante = "topo" | "meio" | "fundo";
 
@@ -20,8 +20,8 @@ const LABEL_PADRAO: Record<Variante, string> = {
 
 /**
  * Botão de conversão para a Systeme.io em 3 níveis de intensidade.
- * SEMPRE aponta para /go/systeme (nunca o link bruto). Renderiza como
- * Server Component — o tracking acontece na página /go/systeme.
+ * SEMPRE aponta para /go/systeme (nunca o link bruto), abre em nova aba e
+ * dispara o evento `affiliate_click` no GA4 (via <AffiliateLink>).
  *
  * - topo: sutil, contextual (acima da dobra)
  * - meio: o "gancho" (solução para uma dor citada no texto)
@@ -33,7 +33,6 @@ export function AffiliateCTA({
   label,
   descricao,
 }: AffiliateCTAProps) {
-  const href = goSysteme(refId);
   const texto = label ?? LABEL_PADRAO[variante];
 
   if (variante === "fundo") {
@@ -44,12 +43,12 @@ export function AffiliateCTA({
             {descricao}
           </p>
         )}
-        <a
-          href={href}
+        <AffiliateLink
+          refId={refId}
           className="inline-block rounded-xl bg-[#00B2B2] px-8 py-4 text-lg font-semibold text-white transition-colors hover:bg-[#00D1D1]"
         >
           {texto}
-        </a>
+        </AffiliateLink>
         <p className="mt-3 text-xs text-white/50">
           Plano grátis vitalício · Sem cartão de crédito · Zero taxas por venda
         </p>
@@ -61,12 +60,12 @@ export function AffiliateCTA({
     return (
       <p className="my-6 rounded-lg border border-[#00B2B2]/30 bg-[#F7F9FC] px-4 py-3 text-sm">
         {descricao && <span className="text-[#0B132B]/70">{descricao} </span>}
-        <a
-          href={href}
+        <AffiliateLink
+          refId={refId}
           className="font-semibold text-[#00B2B2] underline-offset-2 hover:underline"
         >
           {texto}
-        </a>
+        </AffiliateLink>
       </p>
     );
   }
@@ -75,12 +74,12 @@ export function AffiliateCTA({
   return (
     <p className="my-6">
       {descricao && <span className="text-[#0B132B]/80">{descricao} </span>}
-      <a
-        href={href}
+      <AffiliateLink
+        refId={refId}
         className="inline-block rounded-lg bg-[#00B2B2] px-5 py-2.5 font-semibold text-white transition-colors hover:bg-[#00D1D1]"
       >
         {texto}
-      </a>
+      </AffiliateLink>
     </p>
   );
 }
