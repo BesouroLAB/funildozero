@@ -1,0 +1,40 @@
+{
+  "nome_marca": "Funil do Zero",
+  "arquetipo": "Pragmatista Descomplicador (Rebelde Tecnológico)",
+  "posicionamento": "Combater as altas taxas transacionais (Taxa de Guru) e promover um ecossistema All-in-One de baixo custo ou gratuito (Systeme.io).",
+  "estetica_visual": {
+    "estilo": "SaaS Premium Minimalista",
+    "cores": {
+      "primaria": "#00B2B2",
+      "secundaria": "#0B132B",
+      "fundo_light": "#FFFFFF",
+      "fundo_dark": "#F7F9FC",
+      "alertas": ["#00FF00", "#FF0000"]
+    },
+    "tipografia": {
+      "display": "Poppins",
+      "body": "Inter"
+    }
+  },
+  "identidade_verbal": {
+    "tom_de_voz": "Cirúrgico, Matemático, Educativo no Topo de Funil e Agressivamente Pragmático no Fundo de Funil.",
+    "palavras_permitidas": [
+      "Operação Enxuta",
+      "All-in-One",
+      "Lucratividade Acelerada",
+      "Custo Oculto Zero",
+      "Soberania de Dados",
+      "Dreno Financeiro"
+    ],
+    "palavras_proibidas": [
+      "Dinheiro Fácil",
+      "Trabalhe da Praia",
+      "Hack Secreto",
+      "Garantido"
+    ]
+  },
+  "workflow": {
+    "gatilho_conversao": "Soft-Pitch (Service-as-a-CTA)",
+    "meta_final": "Conversão orgânica e afiliação para a Systeme.io"
+  }
+}

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://funildozero.com.br
+
+# Sitemaps
+Sitemap: https://funildozero.com.br/sitemap.xml
