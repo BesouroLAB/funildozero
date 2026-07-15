@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import { SITE, AFFILIATE_DISCLOSURE } from "@/lib/site";
 
 const LINKS = [
   { href: "/funil-de-vendas", label: "Funil de Vendas" },
   { href: "/ferramentas", label: "Ferramentas" },
-  { href: "/calculadora-taxa-de-guru", label: "Calculadora de Taxa" },
+  { href: "/calculadora-de-taxas", label: "Calculadora de Taxas" },
   { href: "/sobre", label: "Sobre" },
   { href: "/autor", label: "Autor" },
 ];
@@ -15,6 +16,20 @@ export function Footer() {
   return (
     <footer className="mt-16 border-t border-gray-200 bg-[#F7F9FC]">
       <div className="container mx-auto max-w-3xl px-4 py-8">
+        <div className="mb-8">
+          <Link href="/" className="inline-flex items-center gap-2.5 grayscale opacity-70 transition-all hover:grayscale-0 hover:opacity-100">
+            <Image
+              src="/icone.png"
+              alt="Funil do Zero Ícone"
+              width={32}
+              height={32}
+              className="h-8 w-auto"
+            />
+            <span className="font-poppins text-xl font-bold tracking-tight text-[#0B132B] sm:text-2xl">
+              Funil do zero
+            </span>
+          </Link>
+        </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {LINKS.map((l) => (
             <Link

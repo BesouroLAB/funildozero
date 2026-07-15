@@ -75,9 +75,9 @@ export function articleSchema(input: ArticleSchemaInput): JsonLdObject {
     datePublished: published,
     dateModified: input.dateModified ?? published,
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: input.authorName ?? SITE.author,
-      url: SITE.url,
+      url: absoluteUrl("/autor"),
     },
     publisher: {
       "@type": "Organization",
@@ -148,9 +148,9 @@ export function reviewSchema(input: ReviewSchemaInput): JsonLdObject {
     description: input.description,
     url: absoluteUrl(input.url),
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: input.authorName ?? SITE.author,
-      url: SITE.url,
+      url: absoluteUrl("/autor"),
     },
   };
 }

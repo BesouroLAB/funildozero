@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { comparativos, comparativoSlug } from "@/data/comparativos";
+import { getArticlesBySilo } from "@/lib/mdx";
+import { TableOfContents } from "@/components/layout/TableOfContents";
 import { SITE, absoluteUrl } from "@/lib/site";
 import { articleSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -63,102 +65,124 @@ export default function SiloFerramentasPage() {
   ];
 
   return (
-    <article className="container mx-auto max-w-3xl px-4 py-10">
+    <article className="container mx-auto px-4 py-10 lg:grid lg:max-w-6xl lg:grid-cols-[1fr_250px] lg:gap-10">
       <JsonLd data={schema} />
 
-      <nav className="mb-6 text-sm text-[#0B132B]/60">
-        <Link href="/" className="hover:text-[#00B2B2]">
-          Início
-        </Link>{" "}
-        / <span>Ferramentas</span>
-      </nav>
+      {/* Coluna Principal */}
+      <div className="min-w-0">
+        <nav className="mb-6 text-sm text-[#0B132B]/60">
+          <Link href="/" className="hover:text-[#00B2B2]">
+            Início
+          </Link>{" "}
+          / <span>Ferramentas</span>
+        </nav>
 
-      <header>
-        <p className="text-sm font-medium uppercase tracking-wide text-[#00B2B2]">
-          Guia Pilar · Silo 2
-        </p>
-        <h1 className="mt-2 text-4xl font-bold text-[#0B132B]">
-          Ferramentas de Marketing Digital: Qual Escolher?
-        </h1>
-        <p className="mt-3 text-sm text-[#0B132B]/60">
-          Por {SITE.author} · Atualizado em{" "}
-          {new Date(ATUALIZADO).toLocaleDateString("pt-BR")}
-        </p>
-      </header>
+        <header>
+          <p className="text-sm font-medium uppercase tracking-wide text-[#00B2B2]">
+            Guia Completo
+          </p>
+          <h1 className="mt-2 text-4xl font-bold text-[#0B132B]">
+            Ferramentas de Marketing Digital: Qual Escolher?
+          </h1>
+          <p className="mt-3 text-sm text-[#0B132B]/60">
+            Por {SITE.author} · Atualizado em{" "}
+            {new Date(ATUALIZADO).toLocaleDateString("pt-BR")}
+          </p>
+        </header>
 
-      {/* TL;DR — resumo extraível para SEO e citação por IA (GEO) */}
-      <section className="my-8 rounded-xl border border-[#00B2B2]/20 bg-[#F7F9FC] p-5">
-        <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-[#0B132B]">
-          Resumo rápido
-        </h2>
-        <p className="text-[#0B132B]/90">
-          A escolha de uma ferramenta se resume a{" "}
-          <strong>marketplace</strong> (taxa por venda, 5%–10%) vs{" "}
-          <strong>SaaS</strong> (custo fixo, 0% de taxa). Quem tem tráfego
-          próprio economiza com o custo fixo; quem depende de afiliados do
-          marketplace justifica a taxa. Compare abaixo.
-        </p>
-      </section>
+        <section className="my-8 rounded-xl border border-[#00B2B2]/20 bg-[#F7F9FC] p-5">
+          <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-[#0B132B]">
+            Resumo rápido
+          </h2>
+          <p className="text-[#0B132B]/90">
+            Escolher a ferramenta errada pode custar caro (em dólar ou em taxas
+            sobre venda). Neste guia, mapeamos as principais opções do mercado —
+            construtores de páginas, e-mail marketing e plataformas all-in-one —
+            e ensinamos a calcular o custo oculto de cada uma.
+          </p>
+        </section>
 
-      {/* Corpo do artigo em MDX */}
-      <div className="prose-fdz">
-        <Conteudo />
+        <div className="prose-fdz">
+          <Conteudo />
+        </div>
+
+        {/* Seção Dinâmica de Comparativos */}
+        <section className="mt-12 border-t border-gray-200 pt-8" id="comparativos">
+          <h2 className="mb-4 text-2xl font-bold text-[#0B132B]">
+            Comparativos Detalhados (2026)
+          </h2>
+          <p className="mb-6 text-[#0B132B]/90">
+            Colocamos a Systeme.io lado a lado com os principais concorrentes do
+            mercado brasileiro para você ver as diferenças de preço e recursos
+            na ponta do lápis.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {comparativos.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/ferramentas/${comparativoSlug(c)}`}
+                className="group flex flex-col rounded-xl border border-gray-200 bg-white p-5 transition-shadow hover:shadow-md"
+              >
+                <h3 className="font-bold text-[#0B132B] group-hover:text-[#00B2B2]">
+                  Systeme.io vs {c.nome}
+                </h3>
+                <p className="mt-2 text-sm text-[#0B132B]/70">
+                  Como fugir da taxa de {c.precoMinimo} e montar sua estrutura
+                  grátis.
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Linkagem Cruzada — Artigos MDX Satélites do Silo 2 (se existirem) */}
+        {(() => {
+          const artigos = getArticlesBySilo("ferramentas");
+          if (artigos.length === 0) return null;
+          return (
+            <section className="mt-12 border-t border-gray-200 pt-8">
+              <h2 className="mb-3 text-2xl font-bold text-[#0B132B]">
+                Mais sobre Ferramentas
+              </h2>
+              <ul className="space-y-2">
+                {artigos.map((a) => (
+                  <li key={a.frontmatter.slug}>
+                    <Link
+                      href={`/ferramentas/${a.frontmatter.slug}`}
+                      className="text-[#00B2B2] hover:underline"
+                    >
+                      {a.frontmatter.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })()}
+
+        <section className="mt-12 border-t border-gray-200 pt-8">
+          <h2 className="mb-4 text-2xl font-bold text-[#0B132B]">
+            Perguntas frequentes
+          </h2>
+          <div className="space-y-5">
+            {FAQ.map((item) => (
+              <div key={item.q}>
+                <h3 className="font-semibold text-[#0B132B]">{item.q}</h3>
+                <p className="mt-1 text-[#0B132B]/90">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <AffiliateCTA
+          refId="s2-pilar-ferramentas-fundo"
+          variante="fundo"
+          descricao="Comece com a plataforma all-in-one de custo fixo: Systeme.io. Plano gratuito vitalício, sem cartão, com 0% de taxa por venda."
+        />
       </div>
 
-      {/* Hub: calculadora + comparativos (linkagem interna) */}
-      <section className="mt-12 border-t border-gray-200 pt-8">
-        <div className="mb-8 rounded-xl border border-[#00B2B2]/20 bg-[#F7F9FC] p-5">
-          <h2 className="text-lg font-semibold text-[#0B132B]">
-            🧮 Calculadora de Taxa de Guru
-          </h2>
-          <p className="mt-1 text-[#0B132B]/80">
-            Descubra quanto você perde por ano em taxas de marketplace.{" "}
-            <Link
-              href="/calculadora-taxa-de-guru"
-              className="font-medium text-[#00B2B2] hover:underline"
-            >
-              Calcular agora →
-            </Link>
-          </p>
-        </div>
-
-        <h2 className="mb-3 text-2xl font-semibold text-[#0B132B]">
-          Comparativos lado a lado
-        </h2>
-        <ul className="space-y-2">
-          {comparativos.map((c) => (
-            <li key={c.slug}>
-              <Link
-                href={`/ferramentas/${comparativoSlug(c)}`}
-                className="text-[#00B2B2] hover:underline"
-              >
-                Systeme.io vs {c.nome}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      {/* FAQ visível — espelha o FAQPage schema */}
-      <section className="mt-12">
-        <h2 className="mb-4 text-2xl font-bold text-[#0B132B]">
-          Perguntas frequentes
-        </h2>
-        <div className="space-y-5">
-          {FAQ.map((item) => (
-            <div key={item.q}>
-              <h3 className="font-semibold text-[#0B132B]">{item.q}</h3>
-              <p className="mt-1 text-[#0B132B]/90">{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <AffiliateCTA
-        refId="s2-pilar-ferramentas-fundo"
-        variante="fundo"
-        descricao="Comece com a plataforma all-in-one de custo fixo: Systeme.io. Plano gratuito vitalício, sem cartão, com 0% de taxa por venda."
-      />
+      {/* Coluna Lateral: Sumário */}
+      <TableOfContents />
     </article>
   );
 }

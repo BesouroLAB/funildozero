@@ -16,6 +16,9 @@ export interface PlataformaTaxa {
 export const plataformasTaxa: PlataformaTaxa[] = [
   { slug: "hotmart", nome: "Hotmart", percentual: 0.099, fixo: 1.0 },
   { slug: "kiwify", nome: "Kiwify", percentual: 0.0899, fixo: 2.49 },
+  { slug: "eduzz", nome: "Eduzz", percentual: 0.049, fixo: 2.49 },
+  { slug: "greenn", nome: "Greenn", percentual: 0.0499, fixo: 1.0 },
+  { slug: "herospark", nome: "HeroSpark", percentual: 0.079, fixo: 0.0 },
 ];
 
 /** Taxa da Systeme.io usada como referência de comparação (0%). */

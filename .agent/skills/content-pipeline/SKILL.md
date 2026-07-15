@@ -44,3 +44,41 @@ Existem duas "fábricas" de conteúdo neste blog. Saiba qual usar:
 
 ## 📅 Atualização Editorial
 O conteúdo gerado programaticamente deve parecer humano. Se após o deploy percebermos que as páginas estão muito repetitivas ("Thin Content"), volte à Fase 2 (Estruturação) e adicione mais variáveis e blocos condicionais de texto nos data files (`.ts`).
+
+## 📚 Referências de Inteligência
+
+Antes de gerar qualquer novo conteúdo, consulte SEMPRE:
+- `references/inteligencia-mercado.md` — Dados de mercado, volumes de busca, KD, gaps da concorrência e priorização de silos.
+- `pesquisas/seo/` — Arquivos brutos das pesquisas de Deep Dive (ChatGPT, Perplexity, Gemini).
+
+### Dados-Chave de Mercado (Resumo)
+- **Mercado BR de infoprodutos:** R$10,6 bi (2025), CAGR 6,5%, +20M compradores.
+- **Google orgânico:** 64% dos brasileiros usam como 1ª opção de compra; 63% confiam mais no orgânico que em anúncios.
+- **Comissões Systeme.io:** R$570 a R$2.484 por indicação, recorrência vitalícia.
+- **GEO 2026:** Artigos comparativos com tabelas de TCO são o formato mais citado por ChatGPT, Gemini e AI Overviews.
+
+### Prompt de Deep Dive Validado
+Quando precisar rodar uma nova pesquisa de keywords, use o prompt abaixo (rodar preferencialmente no Perplexity com GPT-4o):
+
+```
+Aja como um estrategista de SEO Sênior especializado no mercado brasileiro de marketing digital, infoprodutos e captação de clientes.
+
+O meu objetivo é estruturar o SEO de um blog afiliado que vende as soluções da Systeme.io (plataforma all-in-one). Quero dominar a cauda longa de intenção de compra (Fundo e Meio de Funil).
+
+Faça um "Deep Dive" focado nestes grupos de busca:
+[INSERIR TEMAS AQUI]
+
+INSTRUÇÃO DE SAÍDA EXIGIDA:
+Retorne o resultado EXCLUSIVAMENTE em um único bloco de código JSON válido:
+[
+  {
+    "silo": "Nome do Grupo",
+    "longTailKeywords": ["keyword 1", "keyword 2", "keyword 3", "keyword 4", "keyword 5"],
+    "peopleAlsoAsk": [
+      { "q": "Pergunta?", "a": "Resposta curta e direta focando em conversão" }
+    ],
+    "doresPrincipais": ["dor 1", "dor 2"],
+    "gapDaConcorrencia": "O que falta na concorrência"
+  }
+]
+```

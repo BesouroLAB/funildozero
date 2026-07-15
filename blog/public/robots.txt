@@ -1,6 +1,7 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /go/
 
 # Host
 Host: https://funildozero.com.br

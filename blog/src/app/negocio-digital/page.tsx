@@ -4,6 +4,7 @@ import { SITE, absoluteUrl } from "@/lib/site";
 import { articleSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
+import { TableOfContents } from "@/components/layout/TableOfContents";
 import Conteudo from "./conteudo.mdx";
 
 const URL_PATH = "/negocio-digital";
@@ -62,106 +63,110 @@ export default function SiloNegocioDigitalPage() {
   ];
 
   return (
-    <article className="container mx-auto max-w-3xl px-4 py-10">
+    <article className="container mx-auto px-4 py-10 lg:grid lg:max-w-6xl lg:grid-cols-[1fr_250px] lg:gap-10">
       <JsonLd data={schema} />
 
-      <nav className="mb-6 text-sm text-[#0B132B]/60">
-        <Link href="/" className="hover:text-[#00B2B2]">
-          Início
-        </Link>{" "}
-        / <span>Negócio Digital do Zero</span>
-      </nav>
+      <div className="min-w-0">
+        <nav className="mb-6 text-sm text-[#0B132B]/60">
+          <Link href="/" className="hover:text-[#00B2B2]">
+            Início
+          </Link>{" "}
+          / <span>Negócio Digital</span>
+        </nav>
 
-      <header>
-        <p className="text-sm font-medium uppercase tracking-wide text-[#00B2B2]">
-          Guia Pilar · Silo 4
-        </p>
-        <h1 className="mt-2 text-4xl font-bold text-[#0B132B]">
-          Negócio Digital do Zero: Por Onde Começar
-        </h1>
-        <p className="mt-3 text-sm text-[#0B132B]/60">
-          Por {SITE.author} · Atualizado em{" "}
-          {new Date(ATUALIZADO).toLocaleDateString("pt-BR")}
-        </p>
-      </header>
+        <header>
+          <p className="text-sm font-medium uppercase tracking-wide text-[#00B2B2]">
+            Guia Completo
+          </p>
+          <h1 className="mt-2 text-4xl font-bold text-[#0B132B]">
+            Negócio Digital do Zero: Por Onde Começar
+          </h1>
+          <p className="mt-3 text-sm text-[#0B132B]/60">
+            Por {SITE.author} · Atualizado em{" "}
+            {new Date(ATUALIZADO).toLocaleDateString("pt-BR")}
+          </p>
+        </header>
 
-      {/* TL;DR — resumo extraível para SEO e citação por IA (GEO) */}
-      <section className="my-8 rounded-xl border border-[#00B2B2]/20 bg-[#F7F9FC] p-5">
-        <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-[#0B132B]">
-          Resumo rápido
-        </h2>
-        <p className="text-[#0B132B]/90">
-          Para começar um <strong>negócio digital do zero</strong> você precisa
-          de três coisas: uma <strong>oferta clara</strong>,{" "}
-          <strong>tráfego</strong> e uma <strong>estrutura de conversão</strong>{" "}
-          (funil). Os modelos mais acessíveis são afiliado, infoproduto e
-          serviço — e dá para montar tudo com custo perto de zero.
-        </p>
-      </section>
+        {/* TL;DR — resumo extraível para SEO e citação por IA (GEO) */}
+        <section className="my-8 rounded-xl border border-[#00B2B2]/20 bg-[#F7F9FC] p-5">
+          <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-[#0B132B]">
+            Resumo rápido
+          </h2>
+          <p className="text-[#0B132B]/90">
+            Para começar um <strong>negócio digital do zero</strong> você precisa
+            de três coisas: uma <strong>oferta clara</strong>,{" "}
+            <strong>tráfego</strong> e uma <strong>estrutura de conversão</strong>{" "}
+            (funil). Os modelos mais acessíveis são afiliado, infoproduto e
+            serviço — e dá para montar tudo com custo perto de zero.
+          </p>
+        </section>
 
-      {/* Corpo do artigo em MDX */}
-      <div className="prose-fdz">
-        <Conteudo />
+        {/* Corpo do artigo em MDX */}
+        <div className="prose-fdz">
+          <Conteudo />
+        </div>
+
+        {/* Próximos passos — distribui para os outros silos (ToFu → MoFu/BoFu) */}
+        <section className="mt-12 border-t border-gray-200 pt-8">
+          <h2 className="mb-3 text-2xl font-bold text-[#0B132B]">
+            Próximos passos
+          </h2>
+          <ul className="space-y-2">
+            <li>
+              <Link
+                href="/funil-de-vendas"
+                className="text-[#00B2B2] hover:underline"
+              >
+                Funil de Vendas: o guia completo do zero
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/copywriting-vendas"
+                className="text-[#00B2B2] hover:underline"
+              >
+                Copywriting para Vendas: o guia prático
+              </Link>
+            </li>
+            <li>
+              <Link href="/systeme-io" className="text-[#00B2B2] hover:underline">
+                Review Systeme.io: a plataforma all-in-one gratuita
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/ferramentas"
+                className="text-[#00B2B2] hover:underline"
+              >
+                Ferramentas de marketing: qual escolher
+              </Link>
+            </li>
+          </ul>
+        </section>
+
+        {/* FAQ visível — espelha o FAQPage schema */}
+        <section className="mt-12">
+          <h2 className="mb-4 text-2xl font-bold text-[#0B132B]">
+            Perguntas frequentes
+          </h2>
+          <div className="space-y-5">
+            {FAQ.map((item) => (
+              <div key={item.q}>
+                <h3 className="font-semibold text-[#0B132B]">{item.q}</h3>
+                <p className="mt-1 text-[#0B132B]/90">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <AffiliateCTA
+          refId="s0-pilar-negocio-fundo"
+          variante="fundo"
+          descricao="Crie seu Negócio Digital na Systeme.io. Funil, e-mail marketing, área de membros e blog num só lugar, totalmente grátis para começar."
+        />
       </div>
 
-      {/* Próximos passos — distribui para os outros silos (ToFu → MoFu/BoFu) */}
-      <section className="mt-12 border-t border-gray-200 pt-8">
-        <h2 className="mb-3 text-2xl font-bold text-[#0B132B]">
-          Próximos passos
-        </h2>
-        <ul className="space-y-2">
-          <li>
-            <Link
-              href="/funil-de-vendas"
-              className="text-[#00B2B2] hover:underline"
-            >
-              Funil de Vendas: o guia completo do zero
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/copywriting-vendas"
-              className="text-[#00B2B2] hover:underline"
-            >
-              Copywriting para Vendas: o guia prático
-            </Link>
-          </li>
-          <li>
-            <Link href="/systeme-io" className="text-[#00B2B2] hover:underline">
-              Review Systeme.io: a plataforma all-in-one gratuita
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/ferramentas"
-              className="text-[#00B2B2] hover:underline"
-            >
-              Ferramentas de marketing: qual escolher
-            </Link>
-          </li>
-        </ul>
-      </section>
-
-      {/* FAQ visível — espelha o FAQPage schema */}
-      <section className="mt-12">
-        <h2 className="mb-4 text-2xl font-bold text-[#0B132B]">
-          Perguntas frequentes
-        </h2>
-        <div className="space-y-5">
-          {FAQ.map((item) => (
-            <div key={item.q}>
-              <h3 className="font-semibold text-[#0B132B]">{item.q}</h3>
-              <p className="mt-1 text-[#0B132B]/90">{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <AffiliateCTA
-        refId="s4-pilar-negocio-fundo"
-        variante="fundo"
-        descricao="Dê o primeiro passo com custo zero: monte sua estrutura na Systeme.io. Plano gratuito vitalício, sem cartão e sem programador."
-      />
+      <TableOfContents />
     </article>
   );
 }

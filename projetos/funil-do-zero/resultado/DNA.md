@@ -13,15 +13,15 @@ O visual do "Funil do Zero" abandona o estereótipo amador do marketing de afili
 
 ### 2.1 Paleta de Cores
 **Justificativa:** Espelhar a confiabilidade e modernidade das grandes plataformas de software (SaaS), gerando zero fricção de confiança quando o usuário migrar do nosso blog para o checkout da Systeme.io.
-- **Primária:** **Azul Ciano / Teal (#00B2B2 a #00D1D1)**. Representa a fluidez digital, tecnologia e modernidade. Usada no Símbolo e Botões Principais (CTAs).
-- **Secundária:** **Azul Marinho Profundo (#0B132B)**. Para fundos de blocos de conversão e rodapés, garantindo o "peso" corporativo.
+- **Primária:** **Azul Systeme (#00A3FF)**. Alinha-se perfeitamente com a identidade visual da plataforma, garantindo transição invisível para o usuário. Usada no Símbolo e Botões Principais (CTAs).
+- **Secundária:** **Azul Escuro Noturno (#1F2937 ou #2C3E50)**. Para fundos de blocos de conversão e rodapés, garantindo o "peso" corporativo e contraste moderno.
 - **Fundos (Backgrounds):** Branco Absoluto (#FFFFFF) e Cinza Gelo (#F7F9FC). Para maximizar o respiro visual (white-space) e garantir a legibilidade técnica de artigos profundos de SEO.
 - **Alertas (Semântica):** Verde Neon (para blocos de lucro/sucesso) e Vermelho Sangue (para apontar os custos/taxas da concorrência).
 
 ### 2.2 Tipografia
 **Justificativa:** Reduzir o atrito tecnológico. O usuário já acha marketing digital difícil; a nossa fonte não pode ser mais um obstáculo.
-- **Títulos (Display):** *Poppins* ou *Outfit* (Bold/ExtraBold). Geométricas com curvas suaves que transmitem amistosidade e facilidade de uso.
-- **Textos Longos (Body):** *Inter* (Regular/Medium). Alta performance de leitura, ideal para as dezenas de artigos de SEO Programático do nosso blog.
+- **Títulos (Display):** *Roboto* ou *Inter* (Bold/ExtraBold). Fontes geométricas robustas usadas pela Systeme.io, que transmitem amistosidade e clareza.
+- **Textos Longos (Body):** *Roboto* ou *Inter* (Regular/Medium). Alta performance de leitura e alinhamento total com a interface do produto alvo.
 
 ### 2.3 Sistema de Logo
 A marca evita a representação literal (e clichê) de um funil de plástico. 

@@ -5,6 +5,7 @@ import { SITE, absoluteUrl } from "@/lib/site";
 import { articleSchema, breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
+import { TableOfContents } from "@/components/layout/TableOfContents";
 import Conteudo from "./conteudo.mdx";
 
 const URL_PATH = "/funil-de-vendas";
@@ -71,20 +72,21 @@ export default function SiloFunilPage() {
   ];
 
   return (
-    <article className="container mx-auto max-w-3xl px-4 py-10">
+    <article className="container mx-auto px-4 py-10 lg:grid lg:max-w-6xl lg:grid-cols-[1fr_250px] lg:gap-10">
       <JsonLd data={schema} />
 
-      <nav className="mb-6 text-sm text-[#0B132B]/60">
-        <Link href="/" className="hover:text-[#00B2B2]">
-          Início
-        </Link>{" "}
-        / <span>Funil de Vendas</span>
-      </nav>
+      <div className="min-w-0">
+        <nav className="mb-6 text-sm text-[#0B132B]/60">
+          <Link href="/" className="hover:text-[#00B2B2]">
+            Início
+          </Link>{" "}
+          / <span>Funil de Vendas</span>
+        </nav>
 
-      <header>
-        <p className="text-sm font-medium uppercase tracking-wide text-[#00B2B2]">
-          Guia Pilar · Silo 1
-        </p>
+        <header>
+          <p className="text-sm font-medium uppercase tracking-wide text-[#00B2B2]">
+            Guia Completo
+          </p>
         <h1 className="mt-2 text-4xl font-bold text-[#0B132B]">
           Funil de Vendas: O Guia Completo do Zero
         </h1>
@@ -167,6 +169,9 @@ export default function SiloFunilPage() {
         variante="fundo"
         descricao="Monte seu funil completo — página, e-mail e área de membros — na Systeme.io. Plano gratuito vitalício, sem cartão, com 0% de taxa por venda."
       />
+      </div>
+
+      <TableOfContents />
     </article>
   );
 }

@@ -62,6 +62,30 @@ export default function SobrePage() {
         </p>
 
         <h2 className="pt-4 text-2xl font-bold text-[#0B132B]">
+          Quem está por trás do projeto?
+        </h2>
+        
+        <div className="flex items-center gap-4 rounded-xl border border-gray-200 bg-[#F7F9FC] p-4">
+          <img
+            src="/foto-tiago.jpg"
+            alt="Tiago Fernandes"
+            className="h-16 w-16 shrink-0 rounded-full object-cover shadow-sm"
+          />
+          <div>
+            <p className="font-semibold text-[#0B132B]">Tiago Fernandes</p>
+            <p className="text-sm text-[#0B132B]/80">
+              Roteirista de conteúdo no Magalu há 16 anos, UX Writer e especialista em conteúdo conversacional. Criador da BesouroLAB e Estúdio & Sabor.
+            </p>
+            <Link
+              href="/autor"
+              className="mt-1 inline-block text-sm font-semibold text-[#00B2B2] hover:underline"
+            >
+              Ler perfil completo →
+            </Link>
+          </div>
+        </div>
+
+        <h2 className="pt-4 text-2xl font-bold text-[#0B132B]">
           Como analisamos as ferramentas
         </h2>
         <ul className="list-disc space-y-2 pl-5">
@@ -73,10 +97,10 @@ export default function SobrePage() {
             Traduzimos taxas percentuais em valores reais (quanto você perde por
             mês e por ano) com ferramentas como a{" "}
             <Link
-              href="/calculadora-taxa-de-guru"
+              href="/calculadora-de-taxas"
               className="text-[#00B2B2] hover:underline"
             >
-              Calculadora de Taxa de Guru
+              Calculadora de Taxas de Plataformas
             </Link>
             .
           </li>
@@ -88,13 +112,6 @@ export default function SobrePage() {
 
         <h2 className="pt-4 text-2xl font-bold text-[#0B132B]">Transparência</h2>
         <p>{AFFILIATE_DISCLOSURE}</p>
-        <p>
-          Conheça também{" "}
-          <Link href="/autor" className="text-[#00B2B2] hover:underline">
-            quem escreve o conteúdo
-          </Link>
-          .
-        </p>
       </div>
     </article>
   );

@@ -33,7 +33,7 @@ export function AffiliateLink({ refId, className, children }: AffiliateLinkProps
     <a
       href={goSysteme(refId)}
       target="_blank"
-      rel="noopener"
+      rel="sponsored nofollow noopener"
       onClick={handleClick}
       className={className}
     >

@@ -16,7 +16,19 @@ export interface Comparativo {
   faqItems?: { q: string; a: string }[];
   /** Data ISO da última atualização (freshness p/ SEO/GEO). Opcional. */
   atualizadoEm?: string;
+  /**
+   * Fontes oficiais que embasam os números da página (taxas, preços).
+   * Renderizadas na seção "Fontes" — sinal de E-E-A-T e citabilidade por IA.
+   * URLs validadas manualmente antes de entrar aqui (nunca linkar 404).
+   */
+  fontes?: { nome: string; url: string }[];
 }
+
+/** Fonte comum a todas as páginas do silo: preços oficiais da Systeme.io. */
+export const FONTE_SYSTEME = {
+  nome: "Systeme.io — planos e preços oficiais",
+  url: "https://systeme.io/pt/pricing",
+};
 
 /** Prefixo de URL do comparativo dentro do Silo 2 (ex: systeme-io-vs-hotmart). */
 export const COMPARATIVO_PREFIXO = "systeme-io-vs-";
@@ -77,6 +89,12 @@ export const comparativos: Comparativo[] = [
     metaTitle: "Systeme.io ou Hotmart? Comparativo Completo e Veredito (2026)",
     metaDescription: "Qual é melhor: Hotmart ou Systeme.io? Comparamos taxas, ferramentas e suporte para você não perder dinheiro em 2026.",
     atualizadoEm: "2026-07-13",
+    fontes: [
+      {
+        nome: "Central de Ajuda Hotmart — Quais são as taxas cobradas pela Hotmart?",
+        url: "https://help.hotmart.com/pt-br/article/208298448/quais-sao-as-taxas-cobradas-pela-hotmart-",
+      },
+    ],
     faqItems: [
       {
         q: "Quanto a Hotmart cobra por venda?",
@@ -110,7 +128,13 @@ export const comparativos: Comparativo[] = [
       "Criação de Páginas": ["Básica", "Construtor Drag-and-Drop Completo"]
     },
     metaTitle: "Kiwify vs Systeme.io: Qual Vale Mais a Pena para Infoprodutores?",
-    metaDescription: "Analisamos Kiwify e Systeme.io. Veja como fugir dos bloqueios de saldo e da taxa de 8,99% usando uma plataforma all-in-one gratuita."
+    metaDescription: "Analisamos Kiwify e Systeme.io. Veja como fugir dos bloqueios de saldo e da taxa de 8,99% usando uma plataforma all-in-one gratuita.",
+    fontes: [
+      {
+        nome: "Central de Ajuda Kiwify — Quais são as taxas da plataforma?",
+        url: "https://ajuda.kiwify.com.br/pt-br/article/quais-sao-as-taxas-da-plataforma-1ems3wq/",
+      },
+    ],
   },
   {
     slug: "clickfunnels",
@@ -130,6 +154,64 @@ export const comparativos: Comparativo[] = [
       "Integração PIX": ["Complexa (via Zapier/Apps)", "Mais acessível via Gateways parceiros"]
     },
     metaTitle: "ClickFunnels vs Systeme.io: Pare de Pagar em Dólar (2026)",
-    metaDescription: "O Dólar está pesando? Compare Systeme.io e ClickFunnels e descubra como ter funis profissionais pagando uma fração do preço em Reais."
+    metaDescription: "O Dólar está pesando? Compare Systeme.io e ClickFunnels e descubra como ter funis profissionais pagando uma fração do preço em Reais.",
+    fontes: [
+      {
+        nome: "ClickFunnels — página oficial de preços (em inglês)",
+        url: "https://www.clickfunnels.com/pricing",
+      },
+    ],
+  },
+  {
+    slug: "greenn",
+    nome: "Greenn",
+    categoria: "Checkout Transparente",
+    precoMinimo: "4,99% + R$ 1,00",
+    precoComparativo: "R$ 0,00 (Plano Grátis) / R$ 114 (Startup)",
+    pontosFortesRival: ["Taxa agressiva para produtores independentes", "Boa estabilidade no checkout", "Antecipação de recebíveis facilitada"],
+    pontosFracosRival: ["Não é uma plataforma all-in-one", "Dependência de integrações externas para e-mail e páginas", "Foco apenas em pagamento"],
+    pontosForteSysteme: ["Ferramenta completa (não precisa integrar nada)", "Zero taxas transacionais", "Motor de automação integrado"],
+    pontosFracosSysteme: ["Menos opções de antecipação flexível (depende do seu Stripe/Mercado Pago)", "Checkout não é tão customizável nativamente"],
+    veredito: "Se você tem uma estrutura própria (WordPress + ActiveCampaign) e só quer um checkout, a Greenn é ótima. Mas se você quer consolidar tudo e parar de pagar assinaturas picadas, a Systeme.io é a melhor escolha.",
+    tabelaComparativa: {
+      "Taxa sobre venda": ["4,99% + R$ 1,00", "0% (isento)"],
+      "Automação de E-mail": ["Não possui", "Nativa e Ilimitada"],
+      "Construtor de Funis": ["Não possui", "Avançado e Integrado"],
+      "Mensalidade": ["Sem custo mensal", "Grátis ou R$ 114 (Startup)"]
+    },
+    metaTitle: "Greenn vs Systeme.io: Qual a Melhor Escolha? (2026)",
+    metaDescription: "Comparativo entre Greenn e Systeme.io. Entenda se vale a pena ter um checkout barato ou uma plataforma completa sem taxas.",
+    fontes: [
+      {
+        nome: "Help Greenn — Taxas cobradas pelo Greenn",
+        url: "https://greenn.crisp.help/pt-br/article/taxas-cobradas-pelo-greenn-1l8pin8/",
+      },
+    ],
+  },
+  {
+    slug: "herospark",
+    nome: "HeroSpark",
+    categoria: "Plataforma de Infoprodutos",
+    precoMinimo: "7,9%",
+    precoComparativo: "R$ 0,00 (Plano Grátis) / R$ 114 (Startup)",
+    pontosFortesRival: ["Excelente para quem está começando do absoluto zero", "Criador de funis integrado e simples", "Foco forte em educação e tutoriais"],
+    pontosFracosRival: ["Taxa de quase 8% sobre cada venda", "Menos liberdade técnica para usuários avançados", "E-mail marketing limitado nos planos iniciais"],
+    pontosForteSysteme: ["0% de taxa por venda (isento)", "Motor de automação muito mais robusto", "Plano grátis vitalício sem pegadinhas de taxa"],
+    pontosFracosSysteme: ["Curva de aprendizado um pouco maior para iniciantes", "Menos tutoriais locais no Brasil (a comunidade global é maior)"],
+    veredito: "A HeroSpark é ótima para dar os primeiros passos. No entanto, assim que você começar a vender consistentemente, a taxa de 7,9% vai doer no bolso. A Systeme.io já te prepara para a escala desde o dia 1 sem te taxar por isso.",
+    tabelaComparativa: {
+      "Taxa sobre venda": ["7,9%", "0% (isento)"],
+      "E-mail Marketing": ["Básico", "Avançado e Ilimitado"],
+      "Área de Membros": ["Simples e funcional", "Robusta"],
+      "Foco": ["Iniciantes", "Iniciantes e Avançados"]
+    },
+    metaTitle: "HeroSpark vs Systeme.io: Qual é Melhor para Iniciantes?",
+    metaDescription: "HeroSpark ou Systeme.io? Analisamos as duas plataformas para iniciantes e mostramos qual delas não vai engolir sua margem de lucro.",
+    fontes: [
+      {
+        nome: "HeroSpark — planos para o produtor digital (blog oficial)",
+        url: "https://herospark.com/blog/herospark-planos/",
+      },
+    ],
   }
 ];

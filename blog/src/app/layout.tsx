@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
 // Tipografia da marca (DNA): Poppins nos títulos (display), Inter no corpo.
@@ -27,6 +28,7 @@ export const metadata: Metadata = {
     template: "%s | Funil do Zero"
   },
   description: "Aprenda a criar funis de vendas, páginas de captura e e-mail marketing do zero, sem precisar saber programar.",
+  // Favicon vem da convenção de arquivo src/app/icon.png (servido local, sem CDN externo)
   openGraph: {
     title: "Funil do Zero",
     description: "Aprenda a criar funis de vendas e e-mail marketing do zero.",
@@ -34,6 +36,13 @@ export const metadata: Metadata = {
     siteName: "Funil do Zero",
     locale: "pt_BR",
     type: "website",
+    // og:image vem da convenção de arquivo src/app/opengraph-image.png
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Funil do Zero",
+    description: "Aprenda a criar funis de vendas e e-mail marketing do zero.",
+    // twitter:image cai no fallback do og:image (convenção de arquivo)
   },
   verification: {
     google: GSC_VERIFICATION,
@@ -48,6 +57,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
       <body>
+        <Header />
         {children}
         <Footer />
 

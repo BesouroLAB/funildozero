@@ -1,9 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { organizationSchema, websiteSchema, faqPageSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
 import { AffiliateLink } from "@/components/conversion/AffiliateLink";
+
+const FAQ = [
+  {
+    q: "O que é um funil de vendas?",
+    a: "É o mapa da jornada do cliente, da descoberta até a compra. Funciona em três etapas: topo (educar), meio (capturar o contato com uma isca digital) e fundo (converter com uma oferta).",
+  },
+  {
+    q: "Preciso pagar para montar um funil de vendas?",
+    a: "Não. Você monta página de captura, e-mail marketing e área de membros numa plataforma all-in-one como a Systeme.io, que tem plano gratuito vitalício e 0% de taxa por venda.",
+  },
+  {
+    q: "O que é a 'Taxas de Plataformas'?",
+    a: "É o apelido que usamos para as taxas transacionais cobradas por marketplaces como Hotmart (até 9,9%) e Kiwify. Quem fatura R$ 10.000/mês perde cerca de R$ 1.000 só em taxas por venda.",
+  },
+  {
+    q: "Qual a melhor ferramenta para criar funis de vendas em 2026?",
+    a: "Depende do seu tráfego. Se você tem tráfego próprio, a Systeme.io (gratuita, 0% de taxa) é a opção mais econômica. Se depende do marketplace de afiliados, a Hotmart pode fazer mais sentido.",
+  },
+];
 
 export const metadata: Metadata = {
   description:
@@ -42,7 +61,7 @@ const SILOS = [
 export default function Home() {
   return (
     <main>
-      <JsonLd data={[organizationSchema(), websiteSchema()]} />
+      <JsonLd data={[organizationSchema(), websiteSchema(), faqPageSchema(FAQ)]} />
 
       {/* Hero */}
       <section className="bg-[#0B132B] text-white">
@@ -52,7 +71,7 @@ export default function Home() {
           </p>
           <h1 className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl">
             Monte seu primeiro funil de vendas sem pagar a{" "}
-            <span className="text-[#00D1D1]">Taxa de Guru</span>.
+            <span className="text-[#00D1D1]">Taxas de Plataformas</span>.
           </h1>
           <p className="mt-5 text-lg text-white/80">
             Marketplaces engolem até 10% de cada venda e ferramentas gringas
@@ -67,7 +86,7 @@ export default function Home() {
               Criar conta grátis na Systeme.io →
             </AffiliateLink>
             <Link
-              href="/calculadora-taxa-de-guru"
+              href="/calculadora-de-taxas"
               className="rounded-xl border border-white/30 px-6 py-3 font-semibold text-white transition-colors hover:border-[#00D1D1] hover:text-[#00D1D1]"
             >
               Calcular quanto perco em taxas
@@ -112,11 +131,26 @@ export default function Home() {
             taxas. Na Systeme.io, essa conta é <strong>R$ 0</strong>. Faça a sua.
           </p>
           <Link
-            href="/calculadora-taxa-de-guru"
+            href="/calculadora-de-taxas"
             className="mt-6 inline-block rounded-xl bg-[#00B2B2] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#00D1D1]"
           >
-            Abrir a Calculadora de Taxa de Guru →
+            Abrir a Calculadora de Taxas de Plataformas →
           </Link>
+        </div>
+      </section>
+
+      {/* FAQ — Perguntas frequentes (People Also Ask) */}
+      <section className="container mx-auto max-w-3xl px-4 py-16">
+        <h2 className="text-3xl font-bold text-[#0B132B]">
+          Perguntas frequentes
+        </h2>
+        <div className="mt-6 space-y-5">
+          {FAQ.map((item) => (
+            <div key={item.q}>
+              <h3 className="font-semibold text-[#0B132B]">{item.q}</h3>
+              <p className="mt-1 text-[#0B132B]/90">{item.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 

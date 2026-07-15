@@ -11,9 +11,9 @@ export const SITE = {
   /** Publicador (Organization) usado em Article/Organization schema. */
   publisher: "Funil do Zero",
   /** Autoria editorial padrão. Trocar por autor nomeado quando houver E-E-A-T individual. */
-  author: "Equipe Funil do Zero",
+  author: "Tiago Fernandes",
   /** Logo para Organization schema. O arquivo deve existir em /public. */
-  logo: "https://funildozero.com.br/logo_funil.png",
+  logo: "https://funildozero.com.br/logo.png",
   /** Data de atualização padrão (fallback de freshness p/ SEO/GEO). */
   defaultUpdated: "2026-07-13",
 } as const;
@@ -24,10 +24,26 @@ export const SITE = {
  * o sinal de autoridade no Google e a citação por IA.
  */
 export const AUTHOR = {
-  name: "Equipe Funil do Zero",
-  role: "Análise de ferramentas de marketing digital e funis de vendas",
+  name: "Tiago Fernandes",
+  role: "UX Writer, Especialista em Conteúdo & Vendas",
   url: "https://funildozero.com.br/autor",
-  bio: "Time editorial dedicado a testar plataformas de marketing digital e traduzir taxas, planos e recursos em decisões práticas para quem vende no digital no Brasil.",
+  bio: "Roteirista de conteúdo há 16 anos, criador da BesouroLAB e especialista em UX Design e Conteúdo para Conversão.",
+  /**
+   * Projetos do autor. Viram `sameAs` no Person schema e links visíveis em
+   * /autor — conectam a entidade "Tiago Fernandes" entre os domínios (E-E-A-T).
+   */
+  projetos: [
+    {
+      nome: "BesouroLAB",
+      url: "https://besourolab.com.br/",
+      descricao: "engenharia web, SEO técnico e IA generativa",
+    },
+    {
+      nome: "Estúdio & Sabor",
+      url: "https://estudiosabor.com.br/",
+      descricao: "IA que transforma fotos de pratos em imagens profissionais",
+    },
+  ],
 } as const;
 
 /** Divulgação de afiliado (transparência — sinal de confiança e E-E-A-T). */

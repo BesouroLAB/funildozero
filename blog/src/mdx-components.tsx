@@ -3,6 +3,26 @@ import type { ComponentProps } from "react";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
 import { TabelaComparativa } from "@/components/conversion/TabelaComparativa";
 
+function getText(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(getText).join("");
+  if (typeof children === "object" && children !== null && "props" in (children as any)) {
+    return getText((children as any).props.children);
+  }
+  return "";
+}
+
+function generateId(children: React.ReactNode): string {
+  const text = getText(children);
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // remove accents
+    .replace(/[^\w\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
 /**
  * Estilos e componentes disponíveis em todo MDX (artigos-pilar). A tipografia
  * segue a marca (corpo Inter, títulos Poppins via globals.css). Componentes de
@@ -11,15 +31,14 @@ import { TabelaComparativa } from "@/components/conversion/TabelaComparativa";
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
-    h2: (props: ComponentProps<"h2">) => (
-      <h2 className="mt-10 mb-3 text-2xl font-bold text-[#0B132B]" {...props} />
-    ),
-    h3: (props: ComponentProps<"h3">) => (
-      <h3
-        className="mt-6 mb-2 text-xl font-semibold text-[#0B132B]"
-        {...props}
-      />
-    ),
+    h2: (props: ComponentProps<"h2">) => {
+      const id = props.id || generateId(props.children);
+      return <h2 id={id} className="mt-10 mb-3 text-2xl font-bold text-[#0B132B]" {...props} />;
+    },
+    h3: (props: ComponentProps<"h3">) => {
+      const id = props.id || generateId(props.children);
+      return <h3 id={id} className="mt-6 mb-2 text-xl font-semibold text-[#0B132B]" {...props} />;
+    },
     p: (props: ComponentProps<"p">) => (
       <p className="my-4 leading-relaxed text-[#0B132B]/90" {...props} />
     ),

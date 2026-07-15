@@ -10,7 +10,7 @@ const brl = new Intl.NumberFormat("pt-BR", {
 });
 
 /**
- * Calculadora de Taxa de Guru. O usuário informa faturamento e ticket médio,
+ * Calculadora de Taxas de Plataformas. O usuário informa faturamento e ticket médio,
  * escolhe a plataforma, e vê quanto perde por mês/ano em taxas vs. os 0% da
  * Systeme.io. Serve como lead magnet e gera um dado citável (GEO).
  */
