@@ -2,6 +2,9 @@ import type { MDXComponents } from "mdx/types";
 import type { ComponentProps } from "react";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
 import { TabelaComparativa } from "@/components/conversion/TabelaComparativa";
+import { RegulacaoBox } from "@/components/mdx/RegulacaoBox";
+import { FunnelDiagram } from "@/components/mdx/FunnelDiagram";
+import { PricingComparison } from "@/components/mdx/PricingComparison";
 
 function getText(children: React.ReactNode): string {
   if (typeof children === "string") return children;
@@ -86,5 +89,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr: () => <hr className="my-8 border-gray-200" />,
     AffiliateCTA,
     TabelaComparativa,
+    RegulacaoBox,
+    FunnelDiagram,
+    PricingComparison,
   };
 }

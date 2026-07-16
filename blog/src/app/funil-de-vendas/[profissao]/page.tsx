@@ -1,3 +1,13 @@
+/**
+ * Rota dinâmica /funil-de-vendas/[profissao]
+ *
+ * Ordem de prioridade (anti template-fill):
+ * 1. MDX individual em content/funil-de-vendas/ (artigo com prosa editorial única)
+ *    → Se tipo="funil-profissao": renderiza com ArticleTemplateFunil (híbrido)
+ *    → Se tipo="editorial" ou sem tipo: renderiza com ArticleTemplate (genérico)
+ * 2. Dados programáticos em profissoes.ts (fallback legado, será migrado)
+ * 3. 404
+ */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -15,6 +25,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
 import { getArticleBySlug, getArticleSlugs } from "@/lib/mdx";
 import { ArticleTemplate } from "@/components/layout/ArticleTemplate";
+import { ArticleTemplateFunil } from "@/components/layout/ArticleTemplateFunil";
 
 const SILO = "funil-de-vendas";
 
@@ -24,11 +35,12 @@ type Params = { profissao: string };
 
 export function generateStaticParams(): Params[] {
   // Combina slugs de profissões (dados) + artigos MDX editoriais
-  const profissaoSlugs = profissoes.map((p) => ({ profissao: p.slug }));
-  const mdxSlugs = getArticleSlugs(SILO).map((slug) => ({
-    profissao: slug,
-  }));
-  return [...profissaoSlugs, ...mdxSlugs];
+  // Deduplica para evitar conflito quando um MDX e um dado programático
+  // compartilham o mesmo slug (cenário de migração progressiva)
+  const profissaoSlugs = profissoes.map((p) => p.slug);
+  const mdxSlugs = getArticleSlugs(SILO);
+  const allSlugs = [...new Set([...profissaoSlugs, ...mdxSlugs])];
+  return allSlugs.map((slug) => ({ profissao: slug }));
 }
 
 export async function generateMetadata({
@@ -38,26 +50,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { profissao } = await params;
 
-  // Tenta profissão programática primeiro
-  const p = getProfissaoBySlug(profissao);
-  if (p) {
-    const url = `/funil-de-vendas/${p.slug}`;
-    return {
-      title: p.metaTitle,
-      description: p.metaDescription,
-      alternates: { canonical: url },
-      openGraph: {
-        title: p.metaTitle,
-        description: p.metaDescription,
-        url: absoluteUrl(url),
-        siteName: SITE.name,
-        locale: SITE.locale,
-        type: "article",
-      },
-    };
-  }
-
-  // Tenta artigo MDX
+  // Prioridade 1: Artigo MDX (conteúdo editorial único)
   const article = getArticleBySlug(SILO, profissao);
   if (article) {
     const { frontmatter } = article;
@@ -77,6 +70,25 @@ export async function generateMetadata({
     };
   }
 
+  // Prioridade 2: Dados programáticos (fallback legado)
+  const p = getProfissaoBySlug(profissao);
+  if (p) {
+    const url = `/funil-de-vendas/${p.slug}`;
+    return {
+      title: p.metaTitle,
+      description: p.metaDescription,
+      alternates: { canonical: url },
+      openGraph: {
+        title: p.metaTitle,
+        description: p.metaDescription,
+        url: absoluteUrl(url),
+        siteName: SITE.name,
+        locale: SITE.locale,
+        type: "article",
+      },
+    };
+  }
+
   return {};
 }
 
@@ -87,7 +99,17 @@ export default async function FunilProfissaoPage({
 }) {
   const { profissao } = await params;
 
-  // ---- Rota 1: Profissão programática ----
+  // ---- Prioridade 1: Artigo MDX (conteúdo editorial único) ----
+  const article = getArticleBySlug(SILO, profissao);
+  if (article) {
+    const tipo = article.frontmatter.tipo ?? "editorial";
+    if (tipo === "funil-profissao") {
+      return <ArticleTemplateFunil article={article} />;
+    }
+    return <ArticleTemplate article={article} />;
+  }
+
+  // ---- Prioridade 2: Profissão programática (legado — será migrada) ----
   const p = getProfissaoBySlug(profissao);
   if (p) {
     const url = `/funil-de-vendas/${p.slug}`;
@@ -244,12 +266,6 @@ export default async function FunilProfissaoPage({
         )}
       </article>
     );
-  }
-
-  // ---- Rota 2: Artigo editorial MDX ----
-  const article = getArticleBySlug(SILO, profissao);
-  if (article) {
-    return <ArticleTemplate article={article} />;
   }
 
   // Nenhum match

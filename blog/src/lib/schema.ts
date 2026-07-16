@@ -1,22 +1,32 @@
 /**
- * Geradores de Schema.org (JSON-LD) tipados. Retornam objetos puros que são
- * serializados pelo componente <JsonLd>. Sem dependências externas (schema-dts
- * é opcional e foi evitado para manter o bundle enxuto).
- *
- * Cobertura de rich snippets: Organization, WebSite, BreadcrumbList, Article,
- * FAQPage. Base para ganhar snippets no Google e citações em motores de IA.
+ * Geradores de Schema.org (JSON-LD) tipados com IDs canônicos (@id).
+ * Retornam objetos puros que são serializados pelo componente <JsonLd>.
+ * 
+ * Implementação de Knowledge Graph: As entidades são conectadas por @id,
+ * garantindo que o Google entenda que o Autor, a Organização, o Site e os Artigos
+ * são parte do mesmo ecossistema, e não entidades isoladas em cada página.
  */
 import { SITE, absoluteUrl } from "./site";
 
 export type JsonLdObject = Record<string, unknown>;
 
+// IDs Canônicos para conectar o Knowledge Graph
+const ORG_ID = `${SITE.url}/#organization`;
+const WEBSITE_ID = `${SITE.url}/#website`;
+const AUTHOR_ID = `${SITE.url}/autor#tiago-fernandes`;
+
 export function organizationSchema(): JsonLdObject {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     name: SITE.publisher,
     url: SITE.url,
-    logo: SITE.logo,
+    logo: {
+      "@type": "ImageObject",
+      url: SITE.logo,
+    },
+    founder: { "@id": AUTHOR_ID },
   };
 }
 
@@ -24,9 +34,12 @@ export function websiteSchema(): JsonLdObject {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEBSITE_ID,
     name: SITE.name,
     url: SITE.url,
+    description: SITE.description,
     inLanguage: "pt-BR",
+    publisher: { "@id": ORG_ID },
   };
 }
 
@@ -62,31 +75,22 @@ export interface ArticleSchemaInput {
 
 export function articleSchema(input: ArticleSchemaInput): JsonLdObject {
   const published = input.datePublished ?? SITE.defaultUpdated;
+  const articleUrl = absoluteUrl(input.url);
+  
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: input.headline,
     description: input.description,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": absoluteUrl(input.url),
-    },
+    url: articleUrl,
+    mainEntityOfPage: articleUrl, // Google prefere a URL direta em vez de WebPage complexa em Article
+    isPartOf: { "@id": WEBSITE_ID },
     ...(input.image ? { image: input.image } : {}),
     datePublished: published,
     dateModified: input.dateModified ?? published,
-    author: {
-      "@type": "Person",
-      name: input.authorName ?? SITE.author,
-      url: absoluteUrl("/autor"),
-    },
-    publisher: {
-      "@type": "Organization",
-      name: SITE.publisher,
-      logo: {
-        "@type": "ImageObject",
-        url: SITE.logo,
-      },
-    },
+    // Referencia as entidades globais via @id para unificar a autoridade
+    author: { "@id": AUTHOR_ID },
+    publisher: { "@id": ORG_ID },
   };
 }
 
@@ -103,16 +107,13 @@ export function personSchema(input: PersonSchemaInput): JsonLdObject {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": AUTHOR_ID,
     name: input.name,
-    url: input.url,
+    url: absoluteUrl(input.url),
     ...(input.jobTitle ? { jobTitle: input.jobTitle } : {}),
     ...(input.description ? { description: input.description } : {}),
     ...(input.sameAs && input.sameAs.length > 0 ? { sameAs: input.sameAs } : {}),
-    worksFor: {
-      "@type": "Organization",
-      name: SITE.publisher,
-      url: SITE.url,
-    },
+    worksFor: { "@id": ORG_ID },
   };
 }
 
@@ -130,27 +131,27 @@ export interface ReviewSchemaInput {
 
 /** Review de software com nota editorial (rich snippet de estrelas no Google). */
 export function reviewSchema(input: ReviewSchemaInput): JsonLdObject {
+  const reviewUrl = absoluteUrl(input.url);
+
   return {
     "@context": "https://schema.org",
-    "@type": "Review",
-    itemReviewed: {
-      "@type": "SoftwareApplication",
-      name: input.itemName,
-      applicationCategory: input.applicationCategory ?? "BusinessApplication",
-      operatingSystem: "Web",
-    },
-    reviewRating: {
-      "@type": "Rating",
-      ratingValue: input.ratingValue,
-      bestRating: input.bestRating ?? 5,
-    },
-    name: `Review ${input.itemName}`,
+    // Para renderizar estrelas para software, é necessário o escopo de SoftwareApplication
+    "@type": "SoftwareApplication",
+    name: input.itemName,
+    applicationCategory: input.applicationCategory ?? "BusinessApplication",
+    operatingSystem: "Web",
+    url: reviewUrl,
     description: input.description,
-    url: absoluteUrl(input.url),
-    author: {
-      "@type": "Person",
-      name: input.authorName ?? SITE.author,
-      url: absoluteUrl("/autor"),
+    review: {
+      "@type": "Review",
+      name: `Review ${input.itemName}`,
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: input.ratingValue,
+        bestRating: input.bestRating ?? 5,
+      },
+      author: { "@id": AUTHOR_ID },
+      publisher: { "@id": ORG_ID },
     },
   };
 }

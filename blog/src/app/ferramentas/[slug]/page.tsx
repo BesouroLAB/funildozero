@@ -1,3 +1,13 @@
+/**
+ * Rota dinâmica /ferramentas/[slug]
+ *
+ * Ordem de prioridade (anti template-fill):
+ * 1. MDX individual em content/ferramentas/ (artigo com prosa editorial única)
+ *    → Se tipo="comparativo": renderiza com ArticleTemplateComparativo (híbrido)
+ *    → Se tipo="editorial" ou sem tipo: renderiza com ArticleTemplate (genérico)
+ * 2. Dados programáticos em comparativos.ts (fallback legado, será migrado)
+ * 3. 404
+ */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -19,6 +29,7 @@ import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
 import { TabelaComparativa } from "@/components/conversion/TabelaComparativa";
 import { getArticleBySlug, getArticleSlugs } from "@/lib/mdx";
 import { ArticleTemplate } from "@/components/layout/ArticleTemplate";
+import { ArticleTemplateComparativo } from "@/components/layout/ArticleTemplateComparativo";
 
 const SILO = "ferramentas";
 
@@ -29,11 +40,11 @@ type Params = { slug: string };
 
 export function generateStaticParams(): Params[] {
   // Combina slugs de comparativos (dados) + artigos MDX editoriais
-  const comparativoSlugs = comparativos.map((c) => ({
-    slug: comparativoSlug(c),
-  }));
-  const mdxSlugs = getArticleSlugs(SILO).map((slug) => ({ slug }));
-  return [...comparativoSlugs, ...mdxSlugs];
+  // Deduplica para cenário de migração progressiva
+  const comparativoSlugs = comparativos.map((c) => comparativoSlug(c));
+  const mdxSlugs = getArticleSlugs(SILO);
+  const allSlugs = [...new Set([...comparativoSlugs, ...mdxSlugs])];
+  return allSlugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -43,26 +54,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  // Tenta comparativo primeiro
-  const c = getComparativoBySlug(slug);
-  if (c) {
-    const url = `/ferramentas/${slug}`;
-    return {
-      title: c.metaTitle,
-      description: c.metaDescription,
-      alternates: { canonical: url },
-      openGraph: {
-        title: c.metaTitle,
-        description: c.metaDescription,
-        url: absoluteUrl(url),
-        siteName: SITE.name,
-        locale: SITE.locale,
-        type: "article",
-      },
-    };
-  }
-
-  // Tenta artigo MDX
+  // Prioridade 1: Artigo MDX (conteúdo editorial único)
   const article = getArticleBySlug(SILO, slug);
   if (article) {
     const { frontmatter } = article;
@@ -82,6 +74,25 @@ export async function generateMetadata({
     };
   }
 
+  // Prioridade 2: Comparativo programático (fallback legado)
+  const c = getComparativoBySlug(slug);
+  if (c) {
+    const url = `/ferramentas/${slug}`;
+    return {
+      title: c.metaTitle,
+      description: c.metaDescription,
+      alternates: { canonical: url },
+      openGraph: {
+        title: c.metaTitle,
+        description: c.metaDescription,
+        url: absoluteUrl(url),
+        siteName: SITE.name,
+        locale: SITE.locale,
+        type: "article",
+      },
+    };
+  }
+
   return {};
 }
 
@@ -92,7 +103,17 @@ export default async function FerramentasSlugPage({
 }) {
   const { slug } = await params;
 
-  // ---- Rota 1: Comparativo programático ----
+  // ---- Prioridade 1: Artigo MDX (conteúdo editorial único) ----
+  const article = getArticleBySlug(SILO, slug);
+  if (article) {
+    const tipo = article.frontmatter.tipo ?? "editorial";
+    if (tipo === "comparativo") {
+      return <ArticleTemplateComparativo article={article} />;
+    }
+    return <ArticleTemplate article={article} />;
+  }
+
+  // ---- Prioridade 2: Comparativo programático (legado — será migrado) ----
   const c = getComparativoBySlug(slug);
   if (c) {
     const url = `/ferramentas/${slug}`;
@@ -271,12 +292,6 @@ export default async function FerramentasSlugPage({
         )}
       </article>
     );
-  }
-
-  // ---- Rota 2: Artigo editorial MDX ----
-  const article = getArticleBySlug(SILO, slug);
-  if (article) {
-    return <ArticleTemplate article={article} />;
   }
 
   // Nenhum match
