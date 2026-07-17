@@ -12,11 +12,10 @@
 ## Destinos conhecidos ainda não publicados (da estratégia §6–8)
 - `/negocio-digital/como-criar-isca-digital`
 - `/systeme-io/autenticacao-de-dominio`
-- `/systeme-io/como-migrar-da-hotmart` (linkado como texto simples em `alternativa-a-hotmart`; usa `<TutorialBox slug="como-hospedar-curso-gratis">` como substituto provisório)
 - `/systeme-io/como-conectar-dominio-proprio`
 
 ## Progresso da Onda 1 do Silo 2 (backlog §6 da estratégia)
 - ✅ Trio completo do Hotmart publicado em 17/07/2026: `/ferramentas/systeme-io-vs-hotmart` (já existia) + `/ferramentas/alternativa-a-hotmart` + `/ferramentas/hotmart-taxas` — valida o padrão das 3 classes de página
 - ✅ Kiwify, ClickFunnels, Greenn, HeroSpark já tinham comparativo `vs` (dataset `comparativos.ts`, de sessão anterior) — faltam as páginas `alternativa-a-` e `-taxas` desses 4
 - ⏳ Faltam nesta onda: Eduzz, Monetizze, Braip, Ticto, Memberkit — nenhuma página (nem `vs`, nem `alternativa`, nem `taxas`) existe ainda para esses 5 rivais
-- ⏳ Silo 3 Camadas 2–3 (Pix/gateways, order bump, webinário, afiliados, migrar da Hotmart, migrar lista, pixel Meta, LGPD opt-in, limites do plano grátis) — nenhum tutorial publicado ainda
+- ⏳ Silo 3 Camadas 2–3 (Pix/gateways, order bump, webinário, afiliados, migrar lista, pixel Meta, LGPD opt-in, limites do plano grátis) — publicado: `/systeme-io/como-migrar-da-hotmart` (17/07/26)

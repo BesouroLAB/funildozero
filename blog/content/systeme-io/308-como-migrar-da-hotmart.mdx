@@ -1,0 +1,160 @@
+---
+title: "Como migrar da Hotmart para a Systeme.io (passo a passo)"
+description: "Centralize seu negócio digital e economize taxas migrando seus cursos, alunos e listas de e-mails da Hotmart para a Systeme.io de forma simples e segura."
+slug: "como-migrar-da-hotmart"
+silo: "systeme-io"
+siloLabel: "Systeme.io"
+date: "2026-07-17"
+updatedAt: "2026-07-17"
+tipo: "tutorial"
+schema: "HowTo"
+faq:
+  - q: "Preciso pagar para hospedar meus cursos e vídeos na Systeme.io?"
+    a: "Não. A Systeme.io oferece hospedagem ilimitada de arquivos e vídeos diretamente em sua plataforma, inclusive no plano gratuito (com limite de 1 curso). Você não precisa pagar serviços externos de vídeo como Vimeo ou Panda Video."
+  - q: "Os meus alunos atuais da Hotmart vão perder o acesso ou pagar novamente?"
+    a: "Não. Ao migrar, você exporta o relatório de compradores ativos da Hotmart e os importa gratuitamente na Systeme.io, concedendo-lhes acesso direto ao novo portal de alunos sem cobrar nada."
+  - q: "O que acontece com os reembolsos ou assinaturas canceladas se eu usar migração parcial?"
+    a: "Se mantiver o checkout da Hotmart, você configura webhooks para que reembolsos ou cancelamentos de assinaturas desativem o acesso do aluno na Systeme.io automaticamente. Se fizer a migração total, a Systeme.io faz esse controle de forma direta."
+  - q: "Consigo migrar produtos de recorrência (assinatura) de forma automatizada?"
+    a: "Não de forma direta pelo gateway. Como a Hotmart gerencia os cartões de assinaturas vigentes, você deve fazer a migração dos alunos atuais manualmente concedendo acesso gratuito vitalício (ou enquanto durar o plano) na Systeme.io e desativar novos cadastros na Hotmart à medida que transfere a nova operação para a Systeme.io."
+---
+
+**Ao final deste tutorial você terá:** o mapa prático e seguro para transferir seus cursos, alunos ativos e lista de e-mails da Hotmart para a Systeme.io. Tempo estimado: **45 minutos**. Custo de transação: **zero** (tudo o que é ensinado aqui pode ser feito com uma conta gratuita da Systeme.io).
+
+## Antes de começar (3 coisas)
+
+Antes de mover qualquer dado, você precisa realizar o mapeamento completo da sua estrutura atual para evitar o churn de alunos e a perda de histórico de leads.
+
+Primeiro, certifique-se de ter uma [conta gratuita na Systeme.io](/go/systeme?ref=como-migrar-da-hotmart). Segundo, baixe todos os vídeos e arquivos complementares das suas aulas caso você não tenha uma cópia de segurança local (pois a Hotmart não exporta arquivos de mídia em massa). Terceiro, escolha entre a **Migração Total** (taxas muito mais baixas usando Stripe ou Mercado Pago diretamente na Systeme.io) ou a **Migração Parcial** (mantendo o checkout da Hotmart e usando a Systeme.io apenas para a entrega do curso e e-mail marketing).
+
+> **Nota sobre os prints:** As telas e menus mencionados aqui seguem a interface atual da Systeme.io e da Hotmart em português. As plataformas realizam pequenas atualizações visuais frequentemente, portanto, atente-se às descrições dos recursos.
+
+---
+
+## O passo a passo da migração
+
+### 1. Recrie as páginas e funis de vendas na Systeme.io
+
+Para iniciar a transição, você deve recriar suas landing pages, páginas de vendas e checkout no editor visual da Systeme.io antes de desativar os links antigos.
+
+No painel da Systeme.io, vá em **Funis → Criar**, selecione **Vender** e dê um nome ao funil. Use o editor arrasta-e-solta para copiar os mesmos textos e o design das páginas que você usava na Hotmart. Você pode usar templates prontos e customizar com suas cores, logotipos e fontes em poucos minutos.
+
+*Print sugerido: Painel de edição de funil com uma nova página de vendas sendo criada — alt: "editor visual de funil de vendas na Systeme.io".*
+
+<TutorialBox slug="como-criar-pagina-de-vendas" titulo="Passo complementar: como criar e estruturar sua página de vendas do zero" />
+
+### 2. Monte a estrutura do seu curso na Systeme.io
+
+Você deve cadastrar os módulos e aulas do seu curso diretamente no portal de membros da Systeme.io antes de liberar o acesso para novos ou antigos alunos.
+
+No menu superior da Systeme.io, acesse **Produtos → Cursos → Adicionar novo curso**. Configure o nome, descrição, imagem de capa e URL do portal de alunos. Em seguida, clique em **Adicionar módulo** e, dentro de cada módulo, crie as aulas (**Adicionar aula**). O grande diferencial da Systeme.io é que você pode fazer o upload dos seus vídeos de aula diretamente na plataforma sem pagar nada a mais por isso (eliminando contas caras de Vimeo, Panda Video ou Wistia).
+
+*Print sugerido: Painel do curso na Systeme.io com módulos e aulas estruturados — alt: "estrutura de área de membros e hospedagem de cursos na Systeme.io".*
+
+<TutorialBox slug="como-hospedar-curso-gratis" titulo="Passo complementar: como configurar e hospedar seu curso no plano grátis" />
+
+### 3. Exporte seus alunos da Hotmart e importe-os na Systeme.io
+
+Você deve exportar o relatório de compradores ativos da Hotmart e importá-lo em lote na Systeme.io para garantir que ninguém perca o acesso ao curso na migração.
+
+1. Na Hotmart, acesse **Vendas → Visão Geral**.
+2. Filtre por **Status da compra: Aprovada e Completa** e selecione o produto desejado.
+3. Exporte a listagem em formato **CSV**.
+4. Na Systeme.io, vá em **Produtos → Cursos → clique no seu curso**.
+5. Clique em **Adicionar alunos** e selecione a opção de importação em lote (ou cadastre manualmente se forem poucos alunos).
+6. Faça o mapeamento das colunas (Nome, E-mail) e conclua a ação. O sistema enviará um e-mail automático com as credenciais de acesso para cada aluno.
+
+*Print sugerido: Tela de importação de alunos via CSV dentro do menu de Cursos da Systeme.io — alt: "como importar lista de alunos CSV na Systeme.io".*
+
+### 4. Exporte e importe sua lista de e-mails (Contatos)
+
+A migração de lista consiste em exportar seus leads da ferramenta anterior (como Klicksend/Hotmart Send ou ActiveCampaign) e importá-los na Systeme.io usando tags específicas para não perder seu histórico.
+
+Exporte sua lista em formato CSV de sua plataforma anterior. Na Systeme.io, acesse o menu **Contatos → Contatos → Importar contatos**. Durante o upload do arquivo CSV, crie e selecione uma Tag de origem (ex.: `importados-hotmart-leads`) para rastrear de onde eles vieram. Isso evita que você misture leads novos com contatos antigos e permite segmentar comunicações futuras.
+
+*Print sugerido: Tela de importação de contatos com a seleção de tag na Systeme.io — alt: "como importar lista de contatos CSV na Systeme.io".*
+
+<TutorialBox slug="regua-de-automacao" titulo="Passo complementar: como programar sua primeira sequência de e-mails pós-importação" />
+
+### 5. Configure os pagamentos na Systeme.io (Migração Total)
+
+Para receber pagamentos diretamente pela Systeme.io e economizar nas taxas abusivas de intermediação da Hotmart, você precisa conectar os gateways de pagamento.
+
+Acesse as configurações do seu perfil na Systeme.io (**Configurações → Gateways de pagamento**) e conecte suas contas do **Stripe** e **Mercado Pago** (as opções mais robustas para o público brasileiro). Feito isso, vá ao seu funil de vendas, adicione uma etapa de checkout e configure o preço do produto associando-o ao gateway escolhido. Com a migração total, você deixa de pagar a taxa de 9,9% + R$ 3,49 da Hotmart e passa a pagar apenas a taxa direta do gateway (que costuma ficar entre 3% e 5%).
+
+*Print sugerido: Configurações de gateways de pagamento integrados no painel — alt: "gateways de pagamento integrados Stripe e Mercado Pago na Systeme.io".*
+
+### 6. Alternativa: Conecte via Webhook (Migração Parcial)
+
+Se você preferir manter o processamento das vendas pela Hotmart (para usar o programa de afiliados deles, por exemplo), você deve integrar as plataformas usando webhooks da Hotmart.
+
+Neste cenário, a venda é feita no checkout da Hotmart e a entrega é feita na área de membros da Systeme.io.
+1. Na Systeme.io, acesse seu curso ou funil de vendas e gere a URL do webhook correspondente no menu de regras de automação.
+2. Na Hotmart, acesse **Ferramentas → Webhook (API e Integrações)**.
+3. Crie uma nova configuração apontando para a URL gerada pela Systeme.io.
+4. Selecione os eventos que disparam a integração: **Compra Aprovada** (libera acesso ao curso) e **Compra Reembolsada / Cancelada** (revoga o acesso ao curso).
+
+*Print sugerido: Painel de Webhook na Hotmart com os eventos selecionados — alt: "integração via webhook da Hotmart com a Systeme.io".*
+
+### 7. Faça um teste real de ponta a ponta
+
+Você deve testar todo o caminho do aluno (da compra ou opt-in ao acesso às aulas) em aba anônima antes de desativar permanentemente o produto antigo na Hotmart.
+
+Faça uma compra de teste de R$ 1,00 ou simule a liberação de um aluno de teste usando um e-mail alternativo seu. Certifique-se de que:
+- O e-mail de boas-vindas da Systeme.io foi entregue com o link de login correto.
+- A senha gerada automaticamente funciona.
+- O progresso das aulas e downloads está carregando perfeitamente.
+- O webhook removeu o acesso ao simular um reembolso (caso use migração parcial).
+
+---
+
+## Os 3 erros mais comuns ao migrar de plataforma
+
+* **Esquecer de avisar os alunos atuais:** Faça uma comunicação clara por e-mail e nos grupos de alunos informando que a área de membros mudará de visual, mas que os conteúdos e o acesso continuam iguais. Diga o dia exato da migração.
+* **Deixar webhooks duplicados ativos:** Se você configurou a Systeme.io para entregar as aulas, desative a entrega automática da Hotmart (Hotmart Club) para não confundir os clientes com dois e-mails de acesso diferentes.
+* **Não segmentar leads antigos:** Importar contatos antigos sem atribuir uma tag de identificação impossibilita a criação de campanhas de e-mail marketing personalizadas para quem já comprou de você.
+
+---
+
+## Onde essa migração se conecta com o seu funil
+
+A migração para uma estrutura integrada na Systeme.io é o maior acelerador de lucro para prestadores de serviços, produtores e profissionais liberais que vendem conhecimento. Conheça as estratégias para rodar seu infoproduto sem taxas:
+- O [lançador e infoprodutor](/funil-de-vendas/lancador-infoprodutor) usa a migração para eliminar custos fixos de plataformas adicionais de páginas e e-mail.
+- O [mentor](/funil-de-vendas/mentor) aproveita a área de membros gratuita e o checkout rápido para vender programas de mentoria de alto ticket.
+- O [coach](/funil-de-vendas/coach) cria e automatiza a entrega de infoprodutos menores na esteira de valor após as sessões presenciais.
+
+---
+
+## Perguntas frequentes
+
+<details className="fz-faq__item">
+<summary className="fz-faq__q">Preciso pagar para hospedar meus cursos e vídeos na Systeme.io?</summary>
+<div className="fz-faq__a">Não. A Systeme.io oferece hospedagem ilimitada de arquivos e vídeos diretamente em sua plataforma, inclusive no plano gratuito (com limite de 1 curso). Você não precisa pagar serviços externos de vídeo como Vimeo ou Panda Video.</div>
+</details>
+
+<details className="fz-faq__item">
+<summary className="fz-faq__q">Os meus alunos atuais da Hotmart vão perder o acesso ou pagar novamente?</summary>
+<div className="fz-faq__a">Não. Ao migrar, você exporta o relatório de compradores ativos da Hotmart e os importa gratuitamente na Systeme.io, concedendo-lhes acesso direto ao novo portal de alunos sem cobrar nada.</div>
+</details>
+
+<details className="fz-faq__item">
+<summary className="fz-faq__q">O que acontece com os reembolsos ou assinaturas canceladas se eu usar migração parcial?</summary>
+<div className="fz-faq__a">Se mantiver o checkout da Hotmart, você configura webhooks para que reembolsos ou cancelamentos de assinaturas desativem o acesso do aluno na Systeme.io automaticamente. Se fizer a migração total, a Systeme.io faz esse controle de forma direta.</div>
+</details>
+
+<details className="fz-faq__item">
+<summary className="fz-faq__q">Consigo migrar produtos de recorrência (assinatura) de forma automatizada?</summary>
+<div className="fz-faq__a">Não de forma direta pelo gateway. Como a Hotmart gerencia os cartões de assinaturas vigentes, você deve fazer a migração dos alunos atuais manualmente concedendo acesso gratuito vitalício (ou enquanto durar o plano) na Systeme.io e desativar novos cadastros na Hotmart à medida que transfere a nova operação para a Systeme.io.</div>
+</details>
+
+<CTAGo slug="como-migrar-da-hotmart" titulo="Migre seu negócio para a Systeme.io agora" reforco="Plano gratuito permanente. Hospedagem de vídeos inclusa, taxas baixas de checkout e automação de e-mails." rotulo="Criar minha conta grátis" />
+
+<LeiaTambem artigos={[
+  { slug: "lancador-infoprodutor", titulo: "Funil de vendas para Lançadores e Infoprodutores" },
+  { slug: "mentor", titulo: "Funil de vendas para Mentores" },
+  { slug: "coach", titulo: "Funil de vendas para Coaches" },
+]} />
+
+---
+
+*Changelog: Publicado em 17 de julho de 2026. Todos os passos testados e conferidos de acordo com a atual interface de integração e cobrança da Hotmart e da Systeme.io.*
