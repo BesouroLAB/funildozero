@@ -100,6 +100,275 @@ h3,
   --dur-fast: 150ms;
 }
 
+@layer components {
+  /* ============================================================
+     .prose-fdz — Tipografia editorial para o corpo dos artigos
+     Fonte única da verdade: todos os templates (ArticleTemplate,
+     ArticleTemplateFunil, ArticleTemplateComparativo) e hub pages
+     renderizam o corpo MDX dentro de <div class="prose-fdz">.
+     ============================================================ */
+  .prose-fdz {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.8;
+    color: var(--ink);
+    max-width: var(--content-max);
+  }
+
+  /* --- Headings --- */
+  .prose-fdz h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    color: var(--ink);
+    margin: 3rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--brand-100);
+  }
+
+  .prose-fdz h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    line-height: var(--leading-snug);
+    color: var(--ink);
+    margin: 2rem 0 0.75rem;
+  }
+
+  .prose-fdz h4 {
+    font-weight: 600;
+    font-size: 1.05em;
+    color: var(--ink);
+    margin: 1.5rem 0 0.5rem;
+  }
+
+  /* --- Paragraphs --- */
+  .prose-fdz p {
+    margin: 1.25em 0;
+    color: var(--stone-800);
+  }
+
+  .prose-fdz > p:first-child {
+    margin-top: 0;
+  }
+
+  /* --- Links --- */
+  .prose-fdz a {
+    color: var(--brand-700);
+    text-decoration: underline;
+    text-decoration-color: var(--brand-300);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    font-weight: 500;
+    transition: color var(--dur-fast) var(--ease-out),
+                text-decoration-color var(--dur-fast) var(--ease-out);
+  }
+
+  .prose-fdz a:hover {
+    color: var(--brand-600);
+    text-decoration-color: var(--brand-600);
+  }
+
+  /* --- Strong / Em --- */
+  .prose-fdz strong {
+    font-weight: 650;
+    color: var(--ink);
+  }
+
+  .prose-fdz em {
+    font-style: italic;
+    color: var(--stone-700);
+  }
+
+  /* --- Lists --- */
+  .prose-fdz ul {
+    list-style: disc;
+    padding-left: 1.5em;
+    margin: 1.25em 0;
+  }
+
+  .prose-fdz ol {
+    list-style: decimal;
+    padding-left: 1.5em;
+    margin: 1.25em 0;
+  }
+
+  .prose-fdz li {
+    margin: 0.5em 0;
+    padding-left: 0.25em;
+    line-height: 1.7;
+  }
+
+  .prose-fdz li::marker {
+    color: var(--brand-600);
+    font-weight: 600;
+  }
+
+  .prose-fdz li > p {
+    margin: 0.35em 0;
+  }
+
+  /* --- Blockquotes --- */
+  .prose-fdz blockquote {
+    background: var(--surface-alt);
+    border-left: 4px solid var(--accent-400);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: var(--space-4) var(--space-5);
+    margin: 1.5em 0;
+    font-style: italic;
+    color: var(--stone-700);
+  }
+
+  .prose-fdz blockquote p {
+    margin: 0.5em 0;
+  }
+
+  .prose-fdz blockquote p:first-child {
+    margin-top: 0;
+  }
+
+  .prose-fdz blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* --- Tables (Markdown tables) --- */
+  .prose-fdz table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    margin: 1.5em 0;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+  }
+
+  .prose-fdz thead th {
+    text-align: left;
+    background: var(--brand-800);
+    color: #fff;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    font-size: 0.85em;
+    letter-spacing: 0.02em;
+  }
+
+  .prose-fdz tbody td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--stone-800);
+  }
+
+  .prose-fdz tbody tr:nth-child(even) {
+    background: var(--surface-alt);
+  }
+
+  .prose-fdz tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Responsive table: stack on mobile */
+  @media (max-width: 640px) {
+    .prose-fdz table {
+      font-size: 0.85rem;
+    }
+
+    .prose-fdz thead th,
+    .prose-fdz tbody td {
+      padding: 0.5rem 0.75rem;
+    }
+  }
+
+  /* Table wrapper for horizontal scroll (used by mdx-components) */
+  .prose-fdz .table-wrapper {
+    overflow-x: auto;
+    margin: 1.5em 0;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+  }
+
+  .prose-fdz .table-wrapper table {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  /* --- Code (inline) --- */
+  .prose-fdz code {
+    background: var(--stone-100);
+    color: var(--stone-800);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.88em;
+    font-weight: 450;
+    word-break: break-word;
+  }
+
+  /* Don't double-style code inside pre blocks */
+  .prose-fdz pre code {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+  }
+
+  /* --- Pre (code blocks) --- */
+  .prose-fdz pre {
+    background: var(--stone-900);
+    color: var(--stone-100);
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin: 1.5em 0;
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  /* --- Horizontal rule --- */
+  .prose-fdz hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2.5rem auto;
+    max-width: 8rem;
+  }
+
+  /* --- Images --- */
+  .prose-fdz img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    margin: 1.5em auto;
+    display: block;
+  }
+
+  /* --- Details/Summary (FAQ within articles) --- */
+  .prose-fdz details {
+    margin: 0.75em 0;
+  }
+
+  .prose-fdz details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* --- Spacing between prose and fz-* components --- */
+  .prose-fdz > .fz-box,
+  .prose-fdz > .fz-cta,
+  .prose-fdz > .fz-precos,
+  .prose-fdz > .fz-leia,
+  .prose-fdz > .fz-ciclo,
+  .prose-fdz > .fz-router,
+  .prose-fdz > .fz-callout,
+  .prose-fdz > .fz-fala {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 /* ---------- CTAGo (proeminência máxima — o único que leva a /go/systeme) ---------- */
 .fz-cta {
   background: var(--brand-800);

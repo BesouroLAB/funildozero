@@ -19,6 +19,7 @@ import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
 import { mdxComponents } from "@/components/mdx/mdxComponents";
 import { TableOfContents } from "@/components/layout/TableOfContents";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 import type { ArticleData } from "@/lib/mdx";
 
 interface ArticleTemplateProps {
@@ -130,6 +131,7 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
               // bloqueadas pelo blockDangerousJS default.
               blockJS: false,
               mdxOptions: {
+                remarkPlugins: [remarkGfm],
                 rehypePlugins: [rehypeSlug],
               },
             }}

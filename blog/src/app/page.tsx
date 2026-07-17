@@ -70,7 +70,7 @@ export default function Home() {
             Operação enxuta, custo oculto zero
           </p>
           <h1 className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl">
-            Monte seu primeiro funil de vendas sem pagar a{" "}
+            Monte seu primeiro funil de vendas sem pagar{" "}
             <span className="text-[#00D1D1]">Taxas de Plataformas</span>.
           </h1>
           <p className="mt-5 text-lg text-white/80">

@@ -28,65 +28,43 @@ function generateId(children: React.ReactNode): string {
 
 /**
  * Estilos e componentes disponíveis em todo MDX (artigos-pilar). A tipografia
- * segue a marca (corpo Inter, títulos Poppins via globals.css). Componentes de
- * conversão ficam expostos para uso direto dentro do MDX.
+ * base vem de .prose-fdz (globals.css) — aqui ficam apenas os overrides
+ * estruturais (id para ToC, wrapper de tabela) e os componentes registrados.
  */
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
+    // IDs gerados para o Table of Contents e rehype-slug fallback
     h2: (props: ComponentProps<"h2">) => {
       const id = props.id || generateId(props.children);
-      return <h2 id={id} className="mt-10 mb-3 text-2xl font-bold text-[#0B132B]" {...props} />;
+      return <h2 id={id} {...props} />;
     },
     h3: (props: ComponentProps<"h3">) => {
       const id = props.id || generateId(props.children);
-      return <h3 id={id} className="mt-6 mb-2 text-xl font-semibold text-[#0B132B]" {...props} />;
+      return <h3 id={id} {...props} />;
     },
-    p: (props: ComponentProps<"p">) => (
-      <p className="my-4 leading-relaxed text-[#0B132B]/90" {...props} />
-    ),
-    ul: (props: ComponentProps<"ul">) => (
-      <ul
-        className="my-4 list-disc space-y-2 pl-5 text-[#0B132B]/90"
-        {...props}
-      />
-    ),
-    ol: (props: ComponentProps<"ol">) => (
-      <ol
-        className="my-4 list-decimal space-y-2 pl-5 text-[#0B132B]/90"
-        {...props}
-      />
-    ),
-    a: (props: ComponentProps<"a">) => (
-      <a className="font-medium text-[#00B2B2] hover:underline" {...props} />
-    ),
-    strong: (props: ComponentProps<"strong">) => (
-      <strong className="font-semibold text-[#0B132B]" {...props} />
-    ),
-    blockquote: (props: ComponentProps<"blockquote">) => (
-      <blockquote
-        className="my-6 border-l-4 border-[#00B2B2] pl-4 italic text-[#0B132B]/80"
-        {...props}
-      />
-    ),
+    // Wrapper para tabelas e estilos explícitos para garantir o layout (fallback robusto)
     table: (props: ComponentProps<"table">) => (
-      <div className="my-6 overflow-x-auto">
+      <div className="table-wrapper my-6 overflow-x-auto rounded-lg border border-gray-200">
         <table className="w-full border-collapse text-left text-sm" {...props} />
       </div>
     ),
     th: (props: ComponentProps<"th">) => (
       <th
-        className="border-b-2 border-[#0B132B] px-4 py-2 font-semibold text-[#0B132B]"
+        className="bg-[#115e59] px-4 py-3 text-left text-[0.85em] font-semibold tracking-wide text-white"
         {...props}
       />
     ),
     td: (props: ComponentProps<"td">) => (
       <td
-        className="border-b border-gray-200 px-4 py-2 text-[#0B132B]/90"
+        className="border-b border-gray-200 px-4 py-3 text-[#292524] align-top"
         {...props}
       />
     ),
-    hr: () => <hr className="my-8 border-gray-200" />,
+    tr: (props: ComponentProps<"tr">) => (
+      <tr className="even:bg-[#f5f5f4]" {...props} />
+    ),
+    // Componentes registrados para uso dentro do MDX
     AffiliateCTA,
     TabelaComparativa,
     RegulacaoBox,

@@ -19,6 +19,7 @@ import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
 import { TableOfContents } from "@/components/layout/TableOfContents";
 import { profissoes } from "@/data/profissoes";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 import type { ArticleData } from "@/lib/mdx";
 import { mdxComponents } from "@/components/mdx/mdxComponents";
 interface ArticleTemplateFunilProps {
@@ -163,6 +164,7 @@ export function ArticleTemplateFunil({ article }: ArticleTemplateFunilProps) {
               // Conteúdo 1ª parte (repo): libera expressões JSX nos atributos.
               blockJS: false,
               mdxOptions: {
+                remarkPlugins: [remarkGfm],
                 rehypePlugins: [rehypeSlug],
               },
             }}

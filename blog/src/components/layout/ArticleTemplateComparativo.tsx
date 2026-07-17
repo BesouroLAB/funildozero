@@ -20,6 +20,7 @@ import { TabelaComparativa } from "@/components/conversion/TabelaComparativa";
 import { TableOfContents } from "@/components/layout/TableOfContents";
 import { comparativos, comparativoSlug, FONTE_SYSTEME } from "@/data/comparativos";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 import type { ArticleData } from "@/lib/mdx";
 import { mdxComponents } from "@/components/mdx/mdxComponents";
 
@@ -154,6 +155,7 @@ export function ArticleTemplateComparativo({
               // Conteúdo 1ª parte (repo): libera expressões JSX nos atributos.
               blockJS: false,
               mdxOptions: {
+                remarkPlugins: [remarkGfm],
                 rehypePlugins: [rehypeSlug],
               },
             }}
