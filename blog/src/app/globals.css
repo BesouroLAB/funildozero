@@ -310,6 +310,7 @@ h3,
   /* Don't double-style code inside pre blocks */
   .prose-fdz pre code {
     background: none;
+    color: inherit;
     padding: 0;
     border-radius: 0;
     font-size: inherit;

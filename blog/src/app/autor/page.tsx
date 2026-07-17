@@ -67,7 +67,7 @@ export default function AutorPage() {
           Roteirista de conteúdo há 16 anos, atuei como Redator Publicitário no Magalu. Especialista no desenvolvimento de roteiros para web vídeos de produtos, roteirização de unboxings/reviews focados em tecnologia e conteúdos para treinamentos organizacionais.
         </p>
         <p>
-          Desde 2010, participo do processo de crescimento do Magazine Luiza, onde tive o privilégio de acompanhar e contribuir com a evolução da voz e tom da marca, personificados pela Lu. Essa jornada me deu experiência para navegar por diversos temas — afinal, o que você procura, #TemNoMagalu. Também lidero equipes de redação, faço revisão de textos e formo novos roteiristas, atuando até como assistente de direção no set de filmagem.
+          Desde 2010, participo do processo de crescimento do Magazine Luiza, onde tive o privilégio de acompanhar e contribuir com a evolução da voz e tom da marca, personificados pela Lu. Essa jornada me deu experiência para navegar por diversos temas. Também lidero equipes de redação, faço revisão de textos e formo novos roteiristas, atuando até como assistente de direção no set de filmagem.
         </p>
         <p>
           Sempre fui apaixonado por tecnologia e acredito no poder que ela tem de informar e transformar a vida das pessoas. Atualmente, aplico essa paixão no Design de Experiência do Usuário, com foco em UX Writing e Design Conversacional (VUIs), criando jornadas mais fluidas e humanas.
