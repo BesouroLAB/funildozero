@@ -16,6 +16,12 @@ const nextConfig = {
         destination: '/calculadora-de-taxas',
         permanent: true,
       },
+      {
+        // Slug reconciliado pela estratégia SEO: /terapeuta → /terapeuta-holistico
+        source: '/funil-de-vendas/terapeuta',
+        destination: '/funil-de-vendas/terapeuta-holistico',
+        permanent: true,
+      },
     ]
   },
   images: {

@@ -12,7 +12,8 @@ export type Cluster =
   | "Negócios B2B"
   | "Criativo"
   | "Estética"
-  | "Educação";
+  | "Educação"
+  | "Digital";
 
 export interface Profissao {
   slug: string;
@@ -49,6 +50,8 @@ export const clusterContexto: Record<Cluster, string> = {
     "Na estética, a vitrine visual (Instagram, Pinterest) atrai, mas quem fecha é a mecânica: formulários de diagnóstico capturam o lead, qualificam a dor e preenchem os horários ociosos com combos de alto ticket — trocando likes por agenda cheia.",
   Educação:
     "No mercado de conhecimento, o funil está no estado mais puro e agressivo. Desafios gratuitos e masterclasses ativam o desejo; a filtragem por formulário de aplicação e a escassez no fundo de funil sustentam ofertas high-ticket e recorrência.",
+  Digital:
+    "No negócio nativo digital, o funil não é apoio — é o próprio negócio. Lançadores e lojas virtuais vivem de tráfego pago cada vez mais caro, então a sobrevivência está em transformar cada clique em contato próprio (lista de e-mails) e cada venda em recorrência, reduzindo a dependência de leilão de anúncio e de marketplace.",
 };
 
 export const profissoes: Profissao[] = [
@@ -146,9 +149,9 @@ export const profissoes: Profissao[] = [
     atualizadoEm: "2026-07-13",
   },
   {
-    slug: "terapeuta",
-    profissao: "Terapeuta",
-    profissaoPlural: "terapeutas",
+    slug: "terapeuta-holistico",
+    profissao: "Terapeuta Holístico",
+    profissaoPlural: "terapeutas holísticos",
     cluster: "Saúde",
     dor: "Ceticismo do público com abordagens holísticas e dificuldade de mostrar resultado rápido.",
     iscaDigital: "Áudios de meditação guiada, checklists de inteligência emocional e guias de relaxamento.",
@@ -478,6 +481,33 @@ export const profissoes: Profissao[] = [
     metaTitle: "Funil de Vendas para Palestrantes: Contratação Direta In-Company",
     metaDescription: "Livre-se das agências que ficam com sua margem. Um funil que atrai o RH corporativo e fecha palestras in-company sem intermediário.",
     atualizadoEm: "2026-07-13",
+  },
+  // ──────────────── Mini-cluster Digital (personas nativas da Systeme.io) ────────────────
+  {
+    slug: "lancador-infoprodutor",
+    profissao: "Lançador/Infoprodutor",
+    profissaoPlural: "lançadores e infoprodutores",
+    cluster: "Digital",
+    dor: "Custo por lead caríssimo em leilões patrocinados, bloqueios constantes de contas de anúncios e despesas fixas pesadas com múltiplas plataformas.",
+    iscaDigital: "Desafio prático de 3 dias (guia PDF + masterclass com exercícios).",
+    oferta: "Esteira de produtos digitais (perpétuo + lançamento sazonal).",
+    faixaPreco: "R$ 497 a R$ 5.000+ (cursos online, assinaturas ou mentorias).",
+    metaTitle: "Funil de Vendas para Lançador: Conversão em 2026",
+    metaDescription: "Blindando lançamentos e infoprodutos contra bloqueios. Saiba como estruturar uma esteira de vendas na Systeme.io dentro da LGPD.",
+    atualizadoEm: "2026-07-16",
+  },
+  {
+    slug: "e-commerce",
+    profissao: "Dono de E-commerce",
+    profissaoPlural: "donos de e-commerce",
+    cluster: "Digital",
+    dor: "Custo de aquisição de cliente inviabilizando a primeira venda, abandono de carrinho alto e concorrência desleal com marketplaces.",
+    iscaDigital: "Provador virtual analógico (guia de estilo, medidas e combinações em PDF).",
+    oferta: "Cupom de boas-vindas com escassez real (48 horas).",
+    faixaPreco: "R$ 50 a R$ 500 (ticket médio de vendas).",
+    metaTitle: "Funil de Vendas para E-commerce: Escala em 2026",
+    metaDescription: "Vença o aumento do CAC e o abandono de carrinho. Saiba como estruturar um funil de recompra recorrente (LTV) na Systeme.io dentro da lei.",
+    atualizadoEm: "2026-07-16",
   },
 ];
 

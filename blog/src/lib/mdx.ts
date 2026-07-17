@@ -19,8 +19,23 @@ const CONTENT_DIR = path.join(process.cwd(), "content");
  * - "editorial": artigo genérico renderizado pelo ArticleTemplate padrão
  * - "funil-profissao": satélite do Silo 1, renderizado pelo ArticleTemplateFunil
  * - "comparativo": satélite do Silo 2, renderizado pelo ArticleTemplateComparativo
+ * - "pilar": artigo-pilar de silo (ex: "o que é funil de vendas") — ArticleTemplate
+ * - "tutorial": passo a passo do Silo 3 (candidato a schema HowTo) — ArticleTemplate
+ * - "tatico": guia tático dos Silos 4/5 — ArticleTemplate
  */
-export type ArticleTipo = "editorial" | "funil-profissao" | "comparativo";
+export type ArticleTipo =
+  | "editorial"
+  | "funil-profissao"
+  | "comparativo"
+  | "pilar"
+  | "tutorial"
+  | "tatico";
+
+/** Tier editorial (estratégia SEO §2): calibra profundidade e atualização. */
+export type ArticleTier = "A" | "B" | "C";
+
+/** Intenção de busca do artigo (estágio do funil editorial). */
+export type ArticleIntent = "tofu" | "mofu" | "bofu";
 
 export interface ArticleFrontmatter {
   title: string;
@@ -44,6 +59,20 @@ export interface ArticleFrontmatter {
    * Default: "editorial" (comportamento legado).
    */
   tipo?: ArticleTipo;
+
+  // ── Campos da estratégia SEO (tiers, intenção, GEO) ──
+  /** Tier editorial A/B/C — profundidade e cadência de atualização. */
+  tier?: ArticleTier;
+  /** Estágio do funil: tofu | mofu | bofu. */
+  intent?: ArticleIntent;
+  /** Data de atualização no formato da estratégia (alias de updatedAt). */
+  updated?: string;
+  /** Schema extra a emitir ("HowTo" nos tutoriais do Silo 3). */
+  schema?: "HowTo";
+  /** (Silo 2) Formato da página: vs | alternativa | taxas. */
+  formato?: "vs" | "alternativa" | "taxas";
+  /** (Silo 2) Data da verificação ao vivo dos preços/taxas do rival. */
+  verificado_em?: string;
 
   // ── Campos do Silo 1: Funil por Profissão ──
   /** Nome da profissão no singular (ex: "Dentista"). */
@@ -141,6 +170,14 @@ function validateFrontmatter(fm: ArticleFrontmatter, file: string): void {
     }
   }
 
+  // Campos da estratégia (quando presentes, precisam ser válidos)
+  if (fm.tier && !["A", "B", "C"].includes(fm.tier)) {
+    errors.push(`"tier" inválido: "${fm.tier}" (use A, B ou C)`);
+  }
+  if (fm.intent && !["tofu", "mofu", "bofu"].includes(fm.intent)) {
+    errors.push(`"intent" inválido: "${fm.intent}" (use tofu, mofu ou bofu)`);
+  }
+
   // Validações por tipo de artigo
   const tipo = fm.tipo ?? "editorial";
   if (tipo === "funil-profissao") {
@@ -178,6 +215,14 @@ export function getArticlesBySilo(silo: string): ArticleData[] {
       const raw = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(raw);
       const frontmatter = data as ArticleFrontmatter;
+
+      // Normalização: `updated` (estratégia) e `updatedAt` (site) são aliases.
+      if (frontmatter.updated && !frontmatter.updatedAt) {
+        frontmatter.updatedAt = frontmatter.updated;
+      }
+      if (frontmatter.updatedAt && !frontmatter.updated) {
+        frontmatter.updated = frontmatter.updatedAt;
+      }
 
       validateFrontmatter(frontmatter, `content/${silo}/${filename}`);
 
@@ -221,4 +266,37 @@ export function getAllArticles(): ArticleData[] {
  */
 export function getArticleSlugs(silo: string): string[] {
   return getArticlesBySilo(silo).map((a) => a.frontmatter.slug);
+}
+
+/**
+ * Extrai os passos de um tutorial (frontmatter `schema: HowTo`) a partir
+ * dos H3 numerados do MDX ("### 1. Título do passo"). O texto do passo é
+ * o primeiro parágrafo após o heading (limpo de markdown/JSX básico).
+ * Usado para gerar o JSON-LD HowTo sem duplicar conteúdo no frontmatter.
+ */
+export function extractHowToSteps(
+  content: string
+): { name: string; text: string }[] {
+  const steps: { name: string; text: string }[] = [];
+  const regex = /^###\s+\d+\.\s+(.+)$/gm;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(content)) !== null) {
+    const name = match[1].trim();
+    // Primeiro parágrafo após o heading (para na próxima linha em branco
+    // seguida de heading/componente, ou no fim do bloco).
+    const rest = content.slice(match.index + match[0].length);
+    const para = rest
+      .split(/\n{2,}/)
+      .map((p) => p.trim())
+      .find((p) => p && !p.startsWith("#") && !p.startsWith("<"));
+    const text = (para ?? "")
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1") // links → texto da âncora
+      .replace(/[*_`]/g, "") // ênfases
+      .replace(/\s+/g, " ")
+      .trim();
+    steps.push({ name, text });
+  }
+
+  return steps;
 }

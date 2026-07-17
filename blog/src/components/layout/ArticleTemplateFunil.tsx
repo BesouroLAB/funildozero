@@ -20,10 +20,7 @@ import { TableOfContents } from "@/components/layout/TableOfContents";
 import { profissoes } from "@/data/profissoes";
 import rehypeSlug from "rehype-slug";
 import type { ArticleData } from "@/lib/mdx";
-import { RegulacaoBox } from "@/components/mdx/RegulacaoBox";
-import { FunnelDiagram } from "@/components/mdx/FunnelDiagram";
-import { PricingComparison } from "@/components/mdx/PricingComparison";
-import { TabelaComparativa } from "@/components/conversion/TabelaComparativa";
+import { mdxComponents } from "@/components/mdx/mdxComponents";
 interface ArticleTemplateFunilProps {
   article: ArticleData;
 }
@@ -161,7 +158,7 @@ export function ArticleTemplateFunil({ article }: ArticleTemplateFunilProps) {
         <div className="prose-fdz mt-8">
           <MDXRemote
             source={content}
-            components={{ AffiliateCTA, RegulacaoBox, FunnelDiagram, PricingComparison, TabelaComparativa }}
+            components={mdxComponents}
             options={{
               mdxOptions: {
                 rehypePlugins: [rehypeSlug],

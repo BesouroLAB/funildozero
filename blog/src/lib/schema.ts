@@ -156,6 +156,43 @@ export function reviewSchema(input: ReviewSchemaInput): JsonLdObject {
   };
 }
 
+export interface HowToStep {
+  name: string;
+  text: string;
+}
+
+export interface HowToSchemaInput {
+  name: string;
+  description: string;
+  /** Path relativo do tutorial (ex: "/systeme-io/como-criar-pagina-de-captura"). */
+  url: string;
+  steps: HowToStep[];
+  /** Duração total no formato ISO 8601 (ex: "PT30M"). */
+  totalTime?: string;
+}
+
+/**
+ * HowTo para os tutoriais do Silo 3 — candidato forte a rich result.
+ * Os passos vêm dos H3 numerados do MDX (ver extractHowToSteps em lib/mdx).
+ */
+export function howToSchema(input: HowToSchemaInput): JsonLdObject {
+  const url = absoluteUrl(input.url);
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: input.name,
+    description: input.description,
+    url,
+    ...(input.totalTime ? { totalTime: input.totalTime } : {}),
+    step: input.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
 export interface FaqItem {
   q: string;
   a: string;

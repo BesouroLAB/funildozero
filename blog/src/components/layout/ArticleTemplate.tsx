@@ -11,9 +11,12 @@ import {
   articleSchema,
   breadcrumbSchema,
   faqPageSchema,
+  howToSchema,
 } from "@/lib/schema";
+import { extractHowToSteps } from "@/lib/mdx";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AffiliateCTA } from "@/components/conversion/AffiliateCTA";
+import { mdxComponents } from "@/components/mdx/mdxComponents";
 import { TableOfContents } from "@/components/layout/TableOfContents";
 import rehypeSlug from "rehype-slug";
 import type { ArticleData } from "@/lib/mdx";
@@ -45,6 +48,22 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
     }),
     ...(faq.length > 0 ? [faqPageSchema(faq)] : []),
   ];
+
+  // Tutoriais do Silo 3 (frontmatter `schema: HowTo`) emitem HowTo junto
+  // do Article — os passos vêm dos H3 numerados do corpo MDX.
+  if (frontmatter.schema === "HowTo") {
+    const steps = extractHowToSteps(content);
+    if (steps.length >= 2) {
+      schema.push(
+        howToSchema({
+          name: frontmatter.title,
+          description: frontmatter.description,
+          url,
+          steps,
+        })
+      );
+    }
+  }
 
   return (
     <article className="container mx-auto px-4 py-10 lg:grid lg:max-w-6xl lg:grid-cols-[1fr_250px] lg:gap-10">
@@ -95,7 +114,7 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
         <div className="prose-fdz mt-8">
           <MDXRemote
             source={content}
-            components={{ AffiliateCTA }}
+            components={mdxComponents}
             options={{
               mdxOptions: {
                 rehypePlugins: [rehypeSlug],

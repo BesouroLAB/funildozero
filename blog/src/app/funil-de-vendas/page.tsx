@@ -17,6 +17,7 @@ const ORDEM_CLUSTERS: Cluster[] = [
   "Criativo",
   "Estética",
   "Educação",
+  "Digital",
 ];
 
 const FAQ = [

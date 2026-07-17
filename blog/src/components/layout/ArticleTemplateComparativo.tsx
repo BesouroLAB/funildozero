@@ -21,6 +21,7 @@ import { TableOfContents } from "@/components/layout/TableOfContents";
 import { comparativos, comparativoSlug, FONTE_SYSTEME } from "@/data/comparativos";
 import rehypeSlug from "rehype-slug";
 import type { ArticleData } from "@/lib/mdx";
+import { mdxComponents } from "@/components/mdx/mdxComponents";
 
 interface ArticleTemplateComparativoProps {
   article: ArticleData;
@@ -148,7 +149,7 @@ export function ArticleTemplateComparativo({
         <div className="prose-fdz mt-8">
           <MDXRemote
             source={content}
-            components={{ AffiliateCTA }}
+            components={mdxComponents}
             options={{
               mdxOptions: {
                 rehypePlugins: [rehypeSlug],
