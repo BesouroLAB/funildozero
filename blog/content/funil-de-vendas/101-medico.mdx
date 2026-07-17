@@ -10,6 +10,8 @@ tipo: "funil-profissao"
 profissao: "Médico"
 profissaoPlural: "médicos"
 cluster: "Saúde"
+tier: "B"
+intent: "mofu"
 dor: "Dependência excessiva de convênios que pagam honorários desvalorizados, agenda lotada com consultas rápidas e exaustivas e medo de infringir o CFM."
 iscaDigital: "Checklist do Check-up Inteligente (PDF Informativo)"
 oferta: "Agendamento de Consulta Particular (ou Telemedicina)"
@@ -36,13 +38,13 @@ O cenário da medicina no Brasil mudou de forma definitiva. Com base nos dados o
 
 Para a maioria, essa abundância traduz-se no **ciclo vicioso dos planos de saúde**. Imagine o cotidiano de um endocrinologista que atende em seu consultório híbrido: ele realiza de 30 a 40 atendimentos por dia para operadoras de saúde, recebendo repasses que variam entre **R$ 35 e R$ 100 por consulta** (valores historicamente atrasados e defasados). O médico passa o dia exaurido, limitando os atendimentos a apenas 10 ou 15 minutos, sem qualquer tempo para dar atenção adequada ao paciente ou investir em seu próprio posicionamento. No final do mês, a conta do consultório mal fecha, a dependência de indicações do "boca a boca" gera instabilidade nas semanas eletivas e os poucos interessados particulares que entram em contato no WhatsApp somem após receberem o preço da consulta.
 
-A única forma sustentável de retomar a autonomia profissional e migrar progressivamente para o atendimento particular é a estruturação de um **funil de vendas de atração e educação de pacientes**, desenhado para rodar automaticamente no background e de forma 100% ética.
+A única forma sustentável de retomar a autonomia profissional e migrar progressivamente para o atendimento particular é a estruturação de um [funil de vendas](/negocio-digital/o-que-e-funil-de-vendas) **de atração e educação de pacientes**, desenhado para rodar automaticamente no background e de forma 100% ética.
 
 ---
 
 ## CFM: O Fim das Zonas Cinzentas com a Resolução 2.336/2023
 
-Por mais de uma década, os médicos brasileiros operaram sob o medo paralisante de processos disciplinares na CODAME (Comissão de Divulgação de Assuntos Médicos). A antiga resolução CFM 1.974/2011 limitava severamente a publicidade, impedindo até selfies em ambiente de trabalho. Porém, as regras do jogo mudaram completamente.
+Por mais de uma década, os médicos brasileiros operaram sob o medo paralisante de processos disciplinares na CODAME (Comissão de Divulgação de Assuntos Médicos). A antiga resolução CFM 1.974/2011 limitava severamente a publicidade, impedindo até selfies em ambiente de trabalho. Porém, as regras do jogo mudaram completamente — assim como no [marketing para dentistas](/funil-de-vendas/dentista), em que o conselho de classe também define (e recentemente flexibilizou) as regras da publicidade em saúde.
 
 <RegulacaoBox conselho="CFM (Conselho Federal de Medicina)">
 A **Resolução CFM nº 2.336/2023** (publicada no final de 2023 e em vigor desde **11 de março de 2024**) flexibilizou as normas históricas, legitimando a presença digital médica.
@@ -81,6 +83,8 @@ Por que este material é altamente eficaz e ético?
 *   **Página 3 — Sinais Silenciosos:** 5 sintomas corriqueiros que indicam a necessidade de investigação clínica imediata (fadiga crônica, alterações inexplicáveis de peso, distúrbios de sono, etc.).
 *   **Página 4 — Conclusão:** O papel do especialista e o canal direto do consultório para agendamento.
 
+Uma alavanca extra para o mesmo funil: **parcerias clínicas de encaminhamento mútuo**. O endocrinologista que trabalha em dupla com nutricionistas — cada um cuidando da sua fronteira de atuação — multiplica a entrada de pacientes qualificados; a mesma lógica vale para a rede com psicólogos no cuidado integrado. Veja como funciona o [funil do nutricionista](/funil-de-vendas/nutricionista) e o [funil do psicólogo](/funil-de-vendas/psicologo) para desenhar a parceria pelos dois lados.
+
 ---
 
 ## Desenho do Funil de Captação Médica na Systeme.io
@@ -100,8 +104,12 @@ Uma página simples, limpa e profissional focada em captar o contato do paciente
 *   **Rodapé Obrigatório:** Nome completo, CRM, palavra "MÉDICO", RQE e termo de uso esclarecendo que a página fornece conteúdo informativo de acordo com as regras de publicidade do CFM.
 *   **Campos:** Nome e E-mail.
 
+<TutorialBox slug="como-criar-pagina-de-captura" titulo="Passo a passo: como criar sua página de captura na Systeme.io" />
+
 ### 2. Página de Obrigado
 O local onde o paciente faz o download imediato do checklist em PDF. Opcionalmente, pode incluir um vídeo curto de 60 segundos do médico dando as boas-vindas e reforçando a importância do autocuidado, finalizando com um botão discreto de direcionamento para agendamento online se o paciente já quiser reservar um horário.
+
+<TutorialBox slug="pagina-de-obrigado-entrega-da-isca" titulo="Passo a passo: página de obrigado com entrega da isca" />
 
 ### 3. Campanha de E-mails de Nutrição (Systeme.io)
 A automação na Systeme.io dispara 5 e-mails educativos para a lista:
@@ -111,11 +119,15 @@ A automação na Systeme.io dispara 5 e-mails educativos para a lista:
 *   **E-mail 4 (Dia 7) — Prova Social e Autoridade:** *"Como atuamos na prevenção clínica: nossa metodologia e formação"*. Foco em credenciais acadêmicas, equipe, consultório e avaliações do Google Meu Negócio.
 *   **E-mail 5 (Dia 10) — Oferta Direta:** *"Pronto para colocar sua saúde em dia? Agenda aberta"*. Instruções diretas e links de WhatsApp para agendamento da consulta particular.
 
+<TutorialBox slug="regua-de-automacao" titulo="Passo a passo: monte a régua de automação que nutre o paciente" />
+
 ---
 
 ## Logística das Tags na Systeme.io
 *   **Tag de Entrada:** Todo lead que preenche a página recebe a tag `lead-medico-checkup` e entra na esteira de e-mails.
 *   **Tag de Conversão:** O lead que clica no botão de agendamento de consulta particular é marcado com a tag `lead-interessado-consulta` e pode ser removido da esteira genérica para receber um contato direto da secretária via WhatsApp de forma personalizada.
+
+<ComparativoBox rival="clickfunnels" titulo="Systeme.io vs ClickFunnels" gancho="Por que pagar um construtor de funil em dólar? A conta lado a lado, em reais." />
 
 <AffiliateCTA
   refId="101-medico-fundo"
