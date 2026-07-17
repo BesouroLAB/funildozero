@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funil do Zero — Styleguide do Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand-50:#F0FDFA;--brand-100:#CCFBF1;--brand-200:#99F6E4;--brand-300:#5EEAD4;--brand-400:#2DD4BF;--brand-500:#14B8A6;--brand-600:#0D9488;--brand-700:#0F766E;--brand-800:#115E59;--brand-900:#134E4A;
+  --accent-50:#FFF7ED;--accent-100:#FFEDD5;--accent-300:#FDBA74;--accent-400:#FB923C;--accent-500:#F97316;--accent-600:#EA580C;--accent-700:#C2410C;
+  --stone-50:#FAFAF9;--stone-100:#F5F5F4;--stone-200:#E7E5E4;--stone-300:#D6D3D1;--stone-400:#A8A29E;--stone-500:#78716C;--stone-600:#57534E;--stone-700:#44403C;--stone-800:#292524;--stone-900:#1C1917;
+  --ink:var(--stone-900);--muted:var(--stone-600);--surface:#fff;--surface-alt:var(--stone-50);--border:var(--stone-200);--border-strong:var(--stone-300);
+  --success:#16A34A;--success-bg:#F0FDF4;--warning:#D97706;--warning-bg:#FFFBEB;--danger:#DC2626;--danger-bg:#FEF2F2;--info:#2563EB;--info-bg:#EFF6FF;
+  --font-display:"Fraunces",Georgia,serif;--font-body:"Inter",system-ui,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,monospace;
+  --text-base:clamp(1.0625rem,1rem + .35vw,1.125rem);--text-lg:clamp(1.2rem,1.12rem + .4vw,1.35rem);--text-xl:clamp(1.45rem,1.3rem + .7vw,1.75rem);--text-2xl:clamp(1.75rem,1.5rem + 1.1vw,2.15rem);--text-3xl:clamp(2.1rem,1.7rem + 1.8vw,2.9rem);--text-4xl:clamp(2.6rem,2rem + 2.8vw,3.8rem);
+  --leading-tight:1.15;--leading-snug:1.35;--leading-body:1.7;--measure:68ch;
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.5rem;--space-6:2rem;--space-8:3rem;--space-10:4rem;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-pill:999px;
+  --shadow-sm:0 1px 2px rgba(28,25,23,.06),0 1px 1px rgba(28,25,23,.04);--shadow-md:0 4px 12px rgba(28,25,23,.08),0 2px 4px rgba(28,25,23,.05);--shadow-lg:0 12px 32px rgba(28,25,23,.10),0 4px 8px rgba(28,25,23,.06);
+  --ease-out:cubic-bezier(.16,1,.3,1);--dur-fast:150ms;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:var(--font-body);font-size:var(--text-base);line-height:var(--leading-body);color:var(--ink);background:var(--stone-100);}
+.wrap{max-width:960px;margin:0 auto;padding:var(--space-6) var(--space-4) var(--space-10);}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:var(--leading-tight);letter-spacing:-.02em;color:var(--ink);font-weight:600;text-wrap:balance;margin:0;}
+.masthead{background:var(--surface);border-radius:var(--radius-lg);padding:var(--space-8) var(--space-6);box-shadow:var(--shadow-sm);border:1px solid var(--border);margin-bottom:var(--space-6);}
+.masthead h1{font-size:var(--text-4xl);font-weight:700;}
+.masthead p{color:var(--muted);font-size:var(--text-lg);margin:var(--space-3) 0 0;max-width:60ch;}
+.kicker{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-700);margin-bottom:var(--space-2);}
+section.card{background:var(--surface);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm);border:1px solid var(--border);margin-bottom:var(--space-6);}
+section.card > h2{font-size:var(--text-2xl);margin-bottom:var(--space-2);}
+section.card > .lead{color:var(--muted);margin:0 0 var(--space-5);font-size:.95rem;}
+.divider{height:1px;background:var(--border);margin:var(--space-5) 0;border:0;}
+
+/* Swatches */
+.ramp{display:flex;border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:var(--space-2);}
+.ramp .sw{flex:1;height:64px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;font-family:var(--font-mono);font-size:10px;}
+.ramp-label{font-size:.85rem;color:var(--muted);margin-bottom:var(--space-4);display:flex;justify-content:space-between;}
+.ramp-label b{color:var(--ink);font-weight:600;}
+
+/* Type scale */
+.type-row{display:flex;align-items:baseline;gap:var(--space-4);padding:var(--space-2) 0;border-bottom:1px dashed var(--border);}
+.type-row .tag{font-family:var(--font-mono);font-size:11px;color:var(--muted);flex:0 0 96px;}
+.grid2{display:grid;gap:var(--space-4);grid-template-columns:1fr;}
+@media(min-width:720px){.grid2{grid-template-columns:1fr 1fr;}}
+
+/* --- Componentes reais --- */
+.fz-btn{display:inline-block;background:var(--accent-600);color:#fff;font-weight:600;font-size:var(--text-base);padding:.85em 1.6em;border-radius:var(--radius-pill);text-decoration:none;transition:transform var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out),box-shadow var(--dur-fast) var(--ease-out);}
+.fz-btn:hover{background:var(--accent-700);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.fz-btn--lg{font-size:var(--text-lg);padding:.9em 1.9em;}
+.fz-cta{background:var(--brand-800);color:#fff;border-radius:var(--radius-lg);padding:var(--space-6);text-align:center;box-shadow:var(--shadow-md);}
+.fz-cta__title{font-family:var(--font-display);font-size:var(--text-2xl);line-height:var(--leading-tight);color:#fff;margin:0 0 var(--space-2);text-wrap:balance;}
+.fz-cta__lead{color:var(--brand-100);font-size:var(--text-base);margin:0 0 var(--space-5);}
+.fz-cta__fine{color:var(--brand-200);font-size:.8rem;margin:var(--space-3) 0 0;}
+.fz-box{display:flex;gap:var(--space-4);align-items:flex-start;background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);}
+.fz-box--comp{border-left:4px solid var(--brand-600);}
+.fz-box--tut{border-left:4px solid var(--brand-300);background:var(--brand-50);}
+.fz-box__ico{font-size:1.6rem;line-height:1;}
+.fz-box__kicker{display:block;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brand-700);margin-bottom:2px;}
+.fz-box__kicker--muted{color:var(--muted);}
+.fz-box__link{font-family:var(--font-display);font-size:var(--text-lg);color:var(--brand-800);text-decoration:none;font-weight:600;}
+.fz-box__link:hover{color:var(--brand-600);text-decoration:underline;}
+.fz-box__hook{font-size:.9rem;color:var(--muted);margin:var(--space-1) 0 0;}
+.fz-fala{font-style:italic;color:var(--stone-700);font-size:var(--text-lg);line-height:var(--leading-snug);border-left:3px solid var(--accent-400);padding:var(--space-1) 0 var(--space-1) var(--space-4);margin:0;}
+.fz-ciclo{background:var(--danger-bg);border:1px solid #FADCD5;border-radius:var(--radius-md);padding:var(--space-5);}
+.fz-ciclo__kicker{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--danger);margin-bottom:var(--space-2);}
+.fz-ciclo__flow{font-weight:600;color:var(--stone-800);line-height:1.9;margin:0;}
+.fz-ciclo__step{background:#fff;border:1px solid var(--border-strong);border-radius:var(--radius-sm);padding:.15em .5em;white-space:nowrap;display:inline-block;}
+.fz-ciclo__arrow{color:var(--danger);font-weight:700;}
+.fz-ciclo__break{margin:var(--space-4) 0 0;color:var(--ink);border-top:1px dashed var(--border-strong);padding-top:var(--space-3);font-size:.95rem;}
+.fz-ciclo__break strong{color:var(--brand-800);}
+.fz-callout{display:flex;gap:var(--space-3);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);font-size:.95rem;line-height:var(--leading-snug);}
+.fz-callout--info{background:var(--info-bg);border:1px solid #BFDBFE;}
+.fz-callout--warn{background:var(--warning-bg);border:1px solid #FDE68A;}
+.fz-callout__ico{font-size:1.3rem;line-height:1;}
+.fz-precos__table{width:100%;border-collapse:collapse;font-size:.9rem;}
+.fz-precos__table th{text-align:left;background:var(--brand-800);color:#fff;padding:var(--space-3);font-weight:600;}
+.fz-precos__table td{padding:var(--space-3);border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums;}
+.fz-precos__table td:not(:first-child){font-family:var(--font-mono);}
+.fz-precos__table tbody tr:nth-child(even){background:var(--surface-alt);}
+.fz-precos__cap{font-family:var(--font-display);font-size:var(--text-lg);text-align:left;margin-bottom:var(--space-3);color:var(--ink);}
+.fz-precos__fonte{font-size:.8rem;color:var(--muted);margin-top:var(--space-2);}
+.fz-disclosure{font-size:.8rem;color:var(--muted);background:var(--surface-alt);border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-2) var(--space-4);}
+.ladder{display:flex;flex-direction:column;gap:var(--space-2);font-family:var(--font-mono);font-size:.85rem;}
+.ladder div{display:flex;align-items:center;gap:var(--space-3);}
+.bar{height:14px;border-radius:3px;}
+.foot{text-align:center;color:var(--muted);font-size:.85rem;padding-top:var(--space-4);}
+.pill{display:inline-block;font-size:.75rem;font-weight:600;padding:.2em .7em;border-radius:var(--radius-pill);background:var(--brand-100);color:var(--brand-800);}
+.badge-do{color:var(--success);font-weight:600;} .badge-dont{color:var(--danger);font-weight:600;}
+ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:var(--space-2);font-size:.95rem;}
+ul.clean li{display:flex;gap:var(--space-2);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="kicker">Funil do Zero · Design System</span>
+    <h1>A voz vira visual.</h1>
+    <p>A identidade traduz o mesmo tom do conteúdo — <strong>anti-hype, honesto, credível</strong>. Parece uma publicação séria sobre negócios, não uma sales page de guru. Este é o styleguide vivo: tudo abaixo usa os tokens e componentes reais.</p>
+  </header>
+
+  <!-- CORES -->
+  <section class="card">
+    <span class="kicker">Fundações</span>
+    <h2>Cor</h2>
+    <p class="lead">Três famílias + semânticas. A ação (coral) é escassa por design — só aparece na conversão.</p>
+    <div class="ramp-label"><b>Marca — teal</b><span>confiança + crescimento · links, ícones, fundos de marca</span></div>
+    <div class="ramp">
+      <div class="sw" style="background:var(--brand-50)"></div><div class="sw" style="background:var(--brand-100)"></div><div class="sw" style="background:var(--brand-200)"></div><div class="sw" style="background:var(--brand-300)"></div><div class="sw" style="background:var(--brand-400)"></div><div class="sw" style="background:var(--brand-500);color:#fff">500</div><div class="sw" style="background:var(--brand-600);color:#fff">600</div><div class="sw" style="background:var(--brand-700);color:#fff">700</div><div class="sw" style="background:var(--brand-800);color:#fff">800</div><div class="sw" style="background:var(--brand-900);color:#fff">900</div>
+    </div>
+    <div class="ramp-label"><b>Ação — coral-laranja</b><span>conversão · CTAGo e 1–2 destaques por página</span></div>
+    <div class="ramp">
+      <div class="sw" style="background:var(--accent-50)"></div><div class="sw" style="background:var(--accent-100)"></div><div class="sw" style="background:var(--accent-300)"></div><div class="sw" style="background:var(--accent-400)"></div><div class="sw" style="background:var(--accent-500);color:#fff">500</div><div class="sw" style="background:var(--accent-600);color:#fff">600</div><div class="sw" style="background:var(--accent-700);color:#fff">700</div>
+    </div>
+    <div class="ramp-label"><b>Neutros — stone (quentes)</b><span>texto e superfícies · mais humano que cinza-frio</span></div>
+    <div class="ramp">
+      <div class="sw" style="background:var(--stone-50)"></div><div class="sw" style="background:var(--stone-100)"></div><div class="sw" style="background:var(--stone-200)"></div><div class="sw" style="background:var(--stone-300)"></div><div class="sw" style="background:var(--stone-400)"></div><div class="sw" style="background:var(--stone-500);color:#fff">500</div><div class="sw" style="background:var(--stone-600);color:#fff">600</div><div class="sw" style="background:var(--stone-700);color:#fff">700</div><div class="sw" style="background:var(--stone-800);color:#fff">800</div><div class="sw" style="background:var(--stone-900);color:#fff">900</div>
+    </div>
+    <div class="ramp-label" style="margin-top:var(--space-3)"><b>Semânticas</b><span>discretas · tabelas, avisos, disclosure</span></div>
+    <div class="ramp">
+      <div class="sw" style="background:var(--success);color:#fff">success</div><div class="sw" style="background:var(--warning);color:#fff">warning</div><div class="sw" style="background:var(--danger);color:#fff">danger</div><div class="sw" style="background:var(--info);color:#fff">info</div>
+    </div>
+  </section>
+
+  <!-- TIPOGRAFIA -->
+  <section class="card">
+    <span class="kicker">Fundações</span>
+    <h2>Tipografia</h2>
+    <p class="lead">Fraunces (serifa editorial = credibilidade) nos títulos · Inter (legibilidade) no corpo · JetBrains Mono nos dados.</p>
+    <div class="type-row"><span class="tag">H1 · 4xl</span><span style="font-family:var(--font-display);font-size:var(--text-4xl);font-weight:700">Funil de Vendas</span></div>
+    <div class="type-row"><span class="tag">H2 · 3xl</span><span style="font-family:var(--font-display);font-size:var(--text-3xl)">Pare de depender de indicação</span></div>
+    <div class="type-row"><span class="tag">H3 · 2xl</span><span style="font-family:var(--font-display);font-size:var(--text-2xl)">A isca que captura o cliente certo</span></div>
+    <div class="type-row"><span class="tag">Corpo · base</span><span style="font-size:var(--text-base)">O texto do artigo respira: 17–18px, altura de linha 1.7, medida controlada. A leitura é o produto.</span></div>
+    <div class="type-row"><span class="tag">Mono · dados</span><span style="font-family:var(--font-mono)">R$ 197 · R$ 997 · 9,9% + R$ 1</span></div>
+  </section>
+
+  <!-- ESCADA -->
+  <section class="card">
+    <span class="kicker">Regra crítica</span>
+    <h2>Escada de proeminência</h2>
+    <p class="lead">Hierarquia honesta de peso visual: o que mais importa para o negócio domina, e nada compete com o CTA principal.</p>
+    <div class="ladder">
+      <div><span style="flex:0 0 150px">CTAGo</span><span class="bar" style="width:100%;background:var(--accent-600)"></span></div>
+      <div><span style="flex:0 0 150px">ComparativoBox</span><span class="bar" style="width:66%;background:var(--brand-600)"></span></div>
+      <div><span style="flex:0 0 150px">TutorialBox</span><span class="bar" style="width:50%;background:var(--brand-300)"></span></div>
+      <div><span style="flex:0 0 150px">Leia também / Router</span><span class="bar" style="width:33%;background:var(--stone-300)"></span></div>
+      <div><span style="flex:0 0 150px">Callouts</span><span class="bar" style="width:33%;background:var(--info)"></span></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="card">
+    <span class="kicker">Componente de conversão</span>
+    <h2>CTAGo <span class="pill">o único → /go/systeme</span></h2>
+    <p class="lead">O ponto de conversão. Forte, quente, honesto — sem urgência falsa, sem contador. Reforço de "grátis" + disclosure embutido.</p>
+    <div class="fz-cta">
+      <h3 class="fz-cta__title">Monte seu funil na prática — de graça</h3>
+      <p class="fz-cta__lead">Plano gratuito da Systeme.io. Sem cartão, em português.</p>
+      <a class="fz-btn fz-btn--lg" href="#">Criar minha conta grátis →</a>
+      <p class="fz-cta__fine">Link de afiliado — indicamos porque usamos. Você não paga nada a mais.</p>
+    </div>
+  </section>
+
+  <!-- BOXES cross-silo -->
+  <section class="card">
+    <span class="kicker">Componentes cross-silo</span>
+    <h2>Boxes de link contextual</h2>
+    <p class="lead">Levam o leitor um passo abaixo no funil. O comparativo (BoFu) pesa mais que o tutorial (execução) — mas nenhum compete com o CTAGo.</p>
+    <div class="grid2">
+      <div class="fz-box fz-box--comp">
+        <span class="fz-box__ico">⚖️</span>
+        <div><span class="fz-box__kicker">Comparativo</span><a class="fz-box__link" href="#">Systeme.io vs Hotmart</a><p class="fz-box__hook">Veja as taxas lado a lado.</p></div>
+      </div>
+      <div class="fz-box fz-box--tut">
+        <span class="fz-box__ico">📘</span>
+        <div><span class="fz-box__kicker fz-box__kicker--muted">Passo a passo</span><a class="fz-box__link" href="#">Como criar sua página de captura</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELEMENTOS-ASSINATURA -->
+  <section class="card">
+    <span class="kicker">Elementos-assinatura (editorial)</span>
+    <h2>A voz do conteúdo, visível</h2>
+    <p class="lead">Os dois recursos "ownable" do projeto: a fala real (identificação) e o ciclo vicioso (a armadilha nomeada).</p>
+    <blockquote class="fz-fala">"Tenho 8 mil seguidores e as terças vazias. Like não paga boleto."</blockquote>
+    <hr class="divider">
+    <div class="fz-ciclo">
+      <span class="fz-ciclo__kicker">O ciclo vicioso</span>
+      <p class="fz-ciclo__flow">
+        <span class="fz-ciclo__step">Posta e espera</span><span class="fz-ciclo__arrow"> → </span><span class="fz-ciclo__step">agenda vazia</span><span class="fz-ciclo__arrow"> → </span><span class="fz-ciclo__step">baixa o preço</span><span class="fz-ciclo__arrow"> → </span><span class="fz-ciclo__step">margem cai</span><span class="fz-ciclo__arrow"> → </span><span class="fz-ciclo__step">sem investir</span><span class="fz-ciclo__arrow"> → </span><span class="fz-ciclo__step">volta ao início</span>
+      </p>
+      <p class="fz-ciclo__break"><strong>Como o funil quebra isso:</strong> lista própria + isca que captura o cliente certo + régua de retorno automática.</p>
+    </div>
+  </section>
+
+  <!-- CALLOUT + TABELA + DISCLOSURE -->
+  <section class="card">
+    <span class="kicker">Componentes funcionais</span>
+    <h2>Conformidade & dados</h2>
+    <p class="lead">O rigor jurídico dos dossiês vira UI: avisos regulatórios discretos, tabelas citáveis (SGE) e disclosure sempre presente.</p>
+    <div class="fz-callout fz-callout--warn" style="margin-bottom:var(--space-4)">
+      <span class="fz-callout__ico">⚠️</span>
+      <div><strong>Atenção (CFM):</strong> médico não divulga preço nem antes/depois. O selo de confiança aqui é o registro, não a promessa.</div>
+    </div>
+    <div class="fz-callout fz-callout--info" style="margin-bottom:var(--space-5)">
+      <span class="fz-callout__ico">✅</span>
+      <div><strong>Permitido:</strong> conteúdo educativo, materiais ricos e captação de leads com consentimento (LGPD).</div>
+    </div>
+    <table class="fz-precos__table">
+      <caption class="fz-precos__cap">Quanto custa começar (faixas de mercado, 2026)</caption>
+      <thead><tr><th scope="col">Formato</th><th scope="col">Faixa</th></tr></thead>
+      <tbody>
+        <tr><td>E-book / entrada</td><td>R$ 27–97</td></tr>
+        <tr><td>Curso perpétuo</td><td>R$ 197–997</td></tr>
+        <tr><td>Assinatura/mês</td><td>R$ 47–297</td></tr>
+      </tbody>
+    </table>
+    <p class="fz-precos__fonte">Fonte: dossiê #31 (Hotmart, 2025/2026)</p>
+    <hr class="divider">
+    <p class="fz-disclosure">Este artigo contém links de afiliado. Se você criar sua conta pela nossa indicação, podemos receber uma comissão — sem custo nenhum para você.</p>
+  </section>
+
+  <!-- DO / DONT -->
+  <section class="card">
+    <span class="kicker">Guarda-corpos</span>
+    <h2>Do / Don't (anti-guru)</h2>
+    <div class="grid2">
+      <ul class="clean">
+        <li><span class="badge-do">✓</span> Branco/stone com respiro; uma ação coral por vista</li>
+        <li><span class="badge-do">✓</span> Serifa editorial nos títulos, com restrição</li>
+        <li><span class="badge-do">✓</span> Números com fonte citada; trust signals visíveis</li>
+        <li><span class="badge-do">✓</span> Escassez só quando é real</li>
+      </ul>
+      <ul class="clean">
+        <li><span class="badge-dont">✗</span> Fundo preto + dourado; vermelho de urgência em tudo</li>
+        <li><span class="badge-dont">✗</span> Contadores regressivos falsos; CAPS gritando</li>
+        <li><span class="badge-dont">✗</span> Sombras pesadas, gradientes berrantes</li>
+        <li><span class="badge-dont">✗</span> Vários CTAs competindo na mesma vista</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="foot">Funil do Zero · Design System v1 — tokens em <code>tokens.css</code>, specs em <code>components.md</code>. Esta página usa os componentes reais.</p>
+
+</div>
+</body>
+</html>

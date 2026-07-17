@@ -3,6 +3,8 @@ name: blog-afiliado-systeme
 description: Fonte de verdade do projeto "Funil do Zero" (ou "Primeiro Funil") — blog de review e conteúdo SEO para venda de afiliado da Systeme.io no mercado brasileiro. Contém definição estratégica, arquitetura de silos, mapa de conteúdo, keywords e regras de execução. Use SEMPRE que o trabalho envolver o blog de afiliado, artigos, SEO, domínio ou conteúdo do projeto Systeme.io.
 ---
 
+> ⚠️ **DEPRECADA (16/07/2026):** substituída pelo novo conjunto de skills `funil-do-zero` (orquestrador) + `funil-do-zero-design-system` + `funil-do-zero-comparativos` + `funil-do-zero-otimizacao` (em `.claude/skills/` e `.agent/skills/`) e pela estratégia consolidada em `materiais/estrategia/`. Consulte-os como fonte da verdade; este arquivo permanece apenas como histórico.
+
 # Projeto Funil do Zero — Mente Coletiva (Fonte da Verdade)
 
 Este documento é a regra máxima (Master Skill) para qualquer IA operando no projeto **Funil do Zero**. Leia-o atentamente antes de fazer qualquer sugestão de arquitetura, copy ou código.

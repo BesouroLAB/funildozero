@@ -1,0 +1,82 @@
+# Funil do Zero
+
+> Blog brasileiro que ensina profissionais autônomos, prestadores de serviço e infoprodutores a captar clientes construindo funis de vendas. Guias práticos por profissão, comparativos honestos de ferramentas e tutoriais — com foco em marketing digital acessível e na plataforma Systeme.io.
+
+O conteúdo é organizado em silos por intenção de busca: guias de funil por profissão (o núcleo), comparativos de plataformas, tutoriais da Systeme.io, fundamentos de negócio digital e copywriting. A abordagem é anti-hype: método e conformidade legal, sem promessa de resultado. Este arquivo lista as páginas mais relevantes para consulta por modelos de linguagem.
+
+## Guias de funil por profissão — Saúde
+- [Médico](https://funildozero.com.br/funil-de-vendas/medico): captação de pacientes dentro das regras do CFM (sem preço nem antes/depois; o registro como selo).
+- [Dentista](https://funildozero.com.br/funil-de-vendas/dentista): funil odontológico e régua de retorno, conforme o CFO.
+- [Psicólogo](https://funildozero.com.br/funil-de-vendas/psicologo): sair das plataformas-leilão e construir lista própria, respeitando o CFP.
+- [Nutricionista](https://funildozero.com.br/funil-de-vendas/nutricionista): captação e fronteiras do CFN (incl. regras de antes/depois).
+- [Fisioterapeuta](https://funildozero.com.br/funil-de-vendas/fisioterapeuta): funil e a fronteira com o personal trainer (COFFITO).
+- [Veterinário](https://funildozero.com.br/funil-de-vendas/veterinario): régua de ciclo (vacinas/retornos) e captação de tutores.
+- [Terapeuta Holístico](https://funildozero.com.br/funil-de-vendas/terapeuta-holistico): posicionamento e a frase-escudo da fronteira com a psicologia.
+- [Esteticista](https://funildozero.com.br/funil-de-vendas/esteticista): funil de estética sob a Lei 12.592 e vigilância sanitária.
+
+## Guias de funil por profissão — Negócios B2B
+- [Advogado](https://funildozero.com.br/funil-de-vendas/advogado): captação dentro do Provimento da OAB (marketing jurídico permitido).
+- [Contador](https://funildozero.com.br/funil-de-vendas/contador): funil contábil e formalização de autônomos (MEI/ME).
+- [Arquiteto](https://funildozero.com.br/funil-de-vendas/arquiteto): captação e o ecossistema do imóvel (CAU).
+- [Corretor de Imóveis](https://funildozero.com.br/funil-de-vendas/corretor-de-imoveis): fugir dos portais-leilão e gerar lista própria (CRECI).
+- [Consultor](https://funildozero.com.br/funil-de-vendas/consultor): escada de valor e a distinção consultor/coach/mentor.
+- [Programador](https://funildozero.com.br/funil-de-vendas/programador): do freelance à consultoria de tecnologia.
+
+## Guias de funil por profissão — Criativo
+- [Designer](https://funildozero.com.br/funil-de-vendas/designer): captação de clientes e o trio design + copy + social.
+- [Copywriter](https://funildozero.com.br/funil-de-vendas/copywriter): posicionamento premium e prospecção.
+- [Social Media](https://funildozero.com.br/funil-de-vendas/social-media): vender gestão de perfil e a tese da lista própria.
+- [Fotógrafo](https://funildozero.com.br/funil-de-vendas/fotografo): o funil por DATA do evento (casamento) e direito de imagem.
+- [Videomaker](https://funildozero.com.br/funil-de-vendas/videomaker): captação audiovisual e o showreel como ativo.
+- [Podcaster](https://funildozero.com.br/funil-de-vendas/podcaster): transformar audiência alugada em lista própria.
+- [YouTuber](https://funildozero.com.br/funil-de-vendas/youtuber): monetizar autoridade sem depender do algoritmo.
+- [Piloto de Drone](https://funildozero.com.br/funil-de-vendas/piloto-de-drone): captação B2B e o checklist do operador regularizado (ANAC).
+
+## Guias de funil por profissão — Estética
+- [Cabeleireiro](https://funildozero.com.br/funil-de-vendas/cabeleireiro): régua de ciclo capilar, recorrência e a Lei do Salão-Parceiro.
+- [Maquiadora](https://funildozero.com.br/funil-de-vendas/maquiadora): funil por data, colheita do evento e biossegurança.
+- [Tatuador](https://funildozero.com.br/funil-de-vendas/tatuador): checklist do estúdio seguro e a esteira do colecionador.
+
+## Guias de funil por profissão — Educação
+- [Personal Trainer](https://funildozero.com.br/funil-de-vendas/personal-trainer): esteira híbrida e régua anti-churn, com o selo CREF (CONFEF).
+- [Professor Particular](https://funildozero.com.br/funil-de-vendas/professor): converter aula avulsa em plano mensal; o cliente é o pai (LGPD).
+- [Coach](https://funildozero.com.br/funil-de-vendas/coach): o checklist anti-charlatão e as fronteiras com a psicologia e o CDC.
+- [Mentor](https://funildozero.com.br/funil-de-vendas/mentor): autoridade demonstrada, funil por aplicação e a pirâmide de ofertas.
+- [Palestrante](https://funildozero.com.br/funil-de-vendas/palestrante): funil B2B, página de palestrante e a colheita do palco.
+
+## Guias de funil por profissão — Digital
+- [Lançador/Infoprodutor](https://funildozero.com.br/funil-de-vendas/lancador-infoprodutor): sair da montanha-russa do lançamento para o híbrido perpétuo + recorrência.
+- [E-commerce](https://funildozero.com.br/funil-de-vendas/e-commerce): as 4 réguas (captura, carrinho abandonado, LTV, calendário) para lojas virtuais.
+
+## Comparativos de ferramentas
+- [Systeme.io vs Hotmart](https://funildozero.com.br/ferramentas/systeme-io-vs-hotmart): taxa por venda vs. custo fixo, com a conta feita.
+- [Systeme.io vs Kiwify](https://funildozero.com.br/ferramentas/systeme-io-vs-kiwify): checkout simples vs. funil completo.
+- [Systeme.io vs ClickFunnels](https://funildozero.com.br/ferramentas/systeme-io-vs-clickfunnels): o gringo caro em dólar vs. a alternativa em real.
+- [Systeme.io vs ActiveCampaign](https://funildozero.com.br/ferramentas/systeme-io-vs-activecampaign): automação robusta vs. tudo-em-um acessível.
+- [Systeme.io vs Kajabi](https://funildozero.com.br/ferramentas/systeme-io-vs-kajabi): plataforma premium vs. plano gratuito.
+- [Systeme.io vs Leadlovers](https://funildozero.com.br/ferramentas/systeme-io-vs-leadlovers): comparativo de recursos e preço.
+- [Systeme.io vs Karta](https://funildozero.com.br/ferramentas/systeme-io-vs-karta): comparativo de recursos e preço.
+
+## Tutoriais da Systeme.io
+- [Como funciona a Systeme.io](https://funildozero.com.br/systeme-io/como-funciona-a-systeme-io): visão geral da plataforma para iniciantes.
+- [Como criar página de captura](https://funildozero.com.br/systeme-io/como-criar-pagina-de-captura): do funil ao formulário com tag, em 30 minutos no plano gratuito.
+- [Página de obrigado e entrega da isca](https://funildozero.com.br/systeme-io/pagina-de-obrigado-entrega-da-isca): a página que entrega o material e conduz ao próximo passo.
+- [Régua de automação de e-mails](https://funildozero.com.br/systeme-io/regua-de-automacao): gatilhos, ações, tags e a sequência de nutrição completa.
+- [Como criar página de vendas](https://funildozero.com.br/systeme-io/como-criar-pagina-de-vendas): estrutura, oferta, checkout conectado e teste do fluxo.
+- [Como criar um blog na Systeme](https://funildozero.com.br/systeme-io/como-criar-um-blog-na-systeme): passo a passo do blog nativo.
+- [Como hospedar curso grátis](https://funildozero.com.br/systeme-io/como-hospedar-curso-gratis): área de membros no plano gratuito.
+
+## Negócio digital (fundamentos)
+- [O que é funil de vendas: guia completo](https://funildozero.com.br/negocio-digital/o-que-e-funil-de-vendas): as 3 etapas (topo, meio, fundo) e como montar o primeiro funil — o guia-base do site.
+- [O que é marketing digital](https://funildozero.com.br/negocio-digital/o-que-e-marketing-digital): introdução para quem está começando.
+- [Como ser afiliado iniciante](https://funildozero.com.br/negocio-digital/como-ser-afiliado-iniciante): primeiros passos no marketing de afiliados.
+- [Infoproduto ou serviço: qual escolher](https://funildozero.com.br/negocio-digital/infoproduto-ou-servico): comparação de modelos de negócio digital.
+
+## Copywriting e vendas
+- [O que é copywriting](https://funildozero.com.br/copywriting-vendas/o-que-e-copywriting): fundamentos da escrita persuasiva.
+- [Gatilhos mentais para vendas](https://funildozero.com.br/copywriting-vendas/gatilhos-mentais-para-vendas): princípios de persuasão aplicados com ética.
+- [Como escrever páginas de vendas](https://funildozero.com.br/copywriting-vendas/como-escrever-pagina-de-vendas): anatomia de uma página que converte.
+- [Prova social sem depoimento falso](https://funildozero.com.br/copywriting-vendas/prova-social-sem-depoimento-falso): o que o CDC permite e 7 tipos de prova verdadeira.
+
+## Optional
+- [Página inicial](https://funildozero.com.br/): apresentação do blog e portas para os silos.

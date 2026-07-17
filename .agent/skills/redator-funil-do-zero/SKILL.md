@@ -3,6 +3,8 @@ name: redator-funil-do-zero
 description: Diretor de conteúdo e redação do projeto "Funil do Zero". Define o tom de voz estratégico, a estrutura obrigatória de ~2.000 palavras por artigo, a conformidade ética detalhada (OAB, CFM, CFO, CFP, etc.) e o uso dos componentes MDX ricos.
 ---
 
+> ⚠️ **DEPRECADA (16/07/2026):** substituída pelo novo conjunto de skills `funil-do-zero` (orquestrador) + `funil-do-zero-design-system` + `funil-do-zero-comparativos` + `funil-do-zero-otimizacao` (em `.claude/skills/` e `.agent/skills/`) e pelo prompt-mestre v2 (`materiais/estrategia/PROMPT-MESTRE-redacao-artigo-pilar.md`). Consulte-os como fonte da verdade; este arquivo permanece apenas como histórico.
+
 # Redator Funil do Zero — Guia de Produção e Estilo Editorial
 
 Este documento serve como a **diretriz editorial e de estilo** para a redação dos artigos pilares e satélites do projeto **Funil do Zero**. Toda IA que assumir a persona de redator deve carregar este arquivo e seguir estritamente as regras documentadas.
