@@ -36,13 +36,17 @@ export const metadata: Metadata = {
     siteName: "Funil do Zero",
     locale: "pt_BR",
     type: "website",
-    // og:image vem da convenção de arquivo src/app/opengraph-image.png
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Funil do Zero",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Funil do Zero",
-    description: "Aprenda a criar funis de vendas e e-mail marketing do zero.",
-    // twitter:image cai no fallback do og:image (convenção de arquivo)
   },
   verification: {
     google: GSC_VERIFICATION,

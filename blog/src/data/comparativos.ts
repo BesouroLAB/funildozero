@@ -213,5 +213,32 @@ export const comparativos: Comparativo[] = [
         url: "https://herospark.com/blog/herospark-planos/",
       },
     ],
+  },
+  {
+    slug: "kajabi",
+    nome: "Kajabi",
+    categoria: "Plataforma Premium Americana",
+    precoMinimo: "US$ 179 / mês",
+    precoComparativo: "R$ 0,00 (Plano Grátis) / R$ 114 (Startup)",
+    pontosFortesRival: ["Acabamento premium e excelente experiência do aluno", "Ferramentas de IA nativas para cursos", "Comunidade global e ecossistema consolidado"],
+    pontosFracosRival: ["Mensalidades muito altas em Dólar (sem plano grátis)", "Taxa de processamento oculta (mesmo com Stripe próprio)", "Reestruturação recente piorou limites de contatos"],
+    pontosForteSysteme: ["Mensalidade fixa em Reais ou plano 100% gratuito", "Zero taxas por venda em todos os planos", "Tudo traduzido para Português BR"],
+    pontosFracosSysteme: ["Área de membros menos polida que a do Kajabi", "Sem a grife do mercado premium internacional"],
+    veredito: "A Systeme.io entrega o essencial de um all-in-one de graça, enquanto o Kajabi cobra caro em Dólar pelo acabamento premium. Para 90% dos criadores brasileiros, o Kajabi é um canhão para matar um mosquito — a Systeme.io é a escolha inteligente.",
+    tabelaComparativa: {
+      "Preço Inicial": ["US$ 179 (~R$ 980)", "Grátis (R$ 0)"],
+      "Taxa sobre venda": ["~4,9% (com Stripe próprio)", "0% (isento)"],
+      "Plano Gratuito": ["Não (só trial)", "Vitalício"],
+      "Foco Principal": ["Criadores Premium Globais", "Todos os Criadores (Brasil/Mundo)"]
+    },
+    metaTitle: "Kajabi vs Systeme.io: Custo Fixo em Dólar Vale a Pena?",
+    metaDescription: "O Kajabi cobra caro e em Dólar. Compare com a Systeme.io e entenda como ter uma plataforma all-in-one sem pagar o preço premium internacional.",
+    atualizadoEm: "2026-07-17",
+    fontes: [
+      {
+        nome: "Kajabi Pricing — Preços oficiais no Brasil",
+        url: "https://kajabi.com.br/precos",
+      },
+    ],
   }
 ];

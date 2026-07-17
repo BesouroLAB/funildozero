@@ -5,6 +5,8 @@ import { SITE, AFFILIATE_DISCLOSURE } from "@/lib/site";
 const LINKS = [
   { href: "/funil-de-vendas", label: "Funil de Vendas" },
   { href: "/ferramentas", label: "Ferramentas" },
+  { href: "/negocio-digital", label: "Negócio Digital" },
+  { href: "/copywriting-vendas", label: "Copywriting" },
   { href: "/calculadora-de-taxas", label: "Calculadora de Taxas" },
   { href: "/sobre", label: "Sobre" },
   { href: "/autor", label: "Autor" },

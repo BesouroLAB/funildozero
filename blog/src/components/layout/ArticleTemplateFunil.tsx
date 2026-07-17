@@ -85,8 +85,14 @@ export function ArticleTemplateFunil({ article }: ArticleTemplateFunilProps) {
             {frontmatter.title}
           </h1>
           <p className="mt-3 text-sm text-[#0B132B]/60">
-            Por {SITE.author} · Atualizado em{" "}
-            {new Date(atualizado).toLocaleDateString("pt-BR")}
+            Por {SITE.author} · Publicado em{" "}
+            {new Date(frontmatter.date).toLocaleDateString("pt-BR", { timeZone: "UTC" })}{" "}
+            {atualizado !== frontmatter.date && (
+              <>
+                · Atualizado em{" "}
+                {new Date(atualizado).toLocaleDateString("pt-BR", { timeZone: "UTC" })}
+              </>
+            )}
           </p>
         </header>
 
