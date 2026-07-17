@@ -18,6 +18,7 @@ import { TabelaComparativa } from "@/components/conversion/TabelaComparativa";
 import { RegulacaoBox } from "@/components/mdx/RegulacaoBox";
 import { FunnelDiagram } from "@/components/mdx/FunnelDiagram";
 import { PricingComparison } from "@/components/mdx/PricingComparison";
+import { VideoEmbed } from "@/components/mdx/VideoEmbed";
 
 export const mdxComponents = {
   // Conversão (design system novo)
@@ -34,4 +35,5 @@ export const mdxComponents = {
   RegulacaoBox,
   FunnelDiagram,
   PricingComparison,
+  VideoEmbed,
 };
