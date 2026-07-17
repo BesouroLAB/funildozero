@@ -151,6 +151,8 @@ export function ArticleTemplateComparativo({
             source={content}
             components={mdxComponents}
             options={{
+              // Conteúdo 1ª parte (repo): libera expressões JSX nos atributos.
+              blockJS: false,
               mdxOptions: {
                 rehypePlugins: [rehypeSlug],
               },

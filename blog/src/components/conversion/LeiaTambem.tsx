@@ -9,14 +9,14 @@ interface ArtigoRelacionado {
 }
 
 interface LeiaTambemProps {
-  artigos: ArtigoRelacionado[];
+  artigos?: ArtigoRelacionado[];
 }
 
 /**
  * Bloco de fim de artigo com 2–4 relacionados do mesmo cluster (ou
  * cross-silo via href). Reforça o ecossistema e os nós isolados da matriz.
  */
-export function LeiaTambem({ artigos }: LeiaTambemProps) {
+export function LeiaTambem({ artigos = [] }: LeiaTambemProps) {
   return (
     <nav className="fz-leia" aria-label="Leia também">
       <h3 className="fz-leia__title">Leia também</h3>

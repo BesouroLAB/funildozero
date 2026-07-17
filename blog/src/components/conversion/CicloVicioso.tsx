@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 interface CicloViciosoProps {
   /** As etapas do ciclo, na ordem (viram a cadeia com setas). */
-  etapas: string[];
+  etapas?: string[];
   /** Linha opcional "como o funil quebra isso". */
   quebra?: string;
 }
@@ -12,7 +12,7 @@ interface CicloViciosoProps {
  * que nomeia a armadilha da captação — o momento de maior identificação
  * do artigo — e prepara a virada para o funil.
  */
-export function CicloVicioso({ etapas, quebra }: CicloViciosoProps) {
+export function CicloVicioso({ etapas = [], quebra }: CicloViciosoProps) {
   return (
     <aside className="fz-ciclo" aria-label="O ciclo vicioso da captação">
       <span className="fz-ciclo__kicker">O ciclo vicioso</span>

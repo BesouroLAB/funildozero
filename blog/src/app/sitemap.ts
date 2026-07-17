@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllArticles } from "@/lib/mdx";
+import { comparativos, comparativoSlug } from "@/data/comparativos";
 import { SITE, absoluteUrl } from "@/lib/site";
 
 /**
@@ -74,5 +75,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticRoutes, ...siloRoutes, ...articleRoutes];
+  // Comparativos programáticos (dataset) que ainda não migraram para MDX.
+  // Dedupe: quando existe MDX com o mesmo slug, o artigo (acima) prevalece.
+  const mdxFerramentasSlugs = new Set(
+    articles
+      .filter((a) => a.frontmatter.silo === "ferramentas")
+      .map((a) => a.frontmatter.slug)
+  );
+  const comparativoRoutes: MetadataRoute.Sitemap = comparativos
+    .filter((c) => !mdxFerramentasSlugs.has(comparativoSlug(c)))
+    .map((c) => ({
+      url: absoluteUrl(`/ferramentas/${comparativoSlug(c)}`),
+      lastModified: new Date(c.atualizadoEm ?? SITE.defaultUpdated),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+
+  return [...staticRoutes, ...siloRoutes, ...articleRoutes, ...comparativoRoutes];
 }

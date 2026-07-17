@@ -1,7 +1,7 @@
 interface TabelaPrecosProps {
-  titulo: string;
-  colunas: string[];
-  linhas: string[][];
+  titulo?: string;
+  colunas?: string[];
+  linhas?: string[][];
   /** Fonte nomeada dos dados (vai no figcaption — a SGE cita quem tem origem). */
   fonte?: string;
 }
@@ -11,7 +11,12 @@ interface TabelaPrecosProps {
  * limpo que AI Overviews/Perplexity extraem com fidelidade. Números em
  * mono, fonte no caption, vira cards no mobile (CSS .fz-precos).
  */
-export function TabelaPrecos({ titulo, colunas, linhas, fonte }: TabelaPrecosProps) {
+export function TabelaPrecos({
+  titulo,
+  colunas = [],
+  linhas = [],
+  fonte,
+}: TabelaPrecosProps) {
   return (
     <figure className="fz-precos">
       <table className="fz-precos__table">

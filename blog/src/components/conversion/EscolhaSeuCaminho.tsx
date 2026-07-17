@@ -8,7 +8,7 @@ interface Caminho {
 
 interface EscolhaSeuCaminhoProps {
   titulo?: string;
-  opcoes: Caminho[];
+  opcoes?: Caminho[];
 }
 
 /**
@@ -17,7 +17,7 @@ interface EscolhaSeuCaminhoProps {
  */
 export function EscolhaSeuCaminho({
   titulo = "Qual é o seu caso?",
-  opcoes,
+  opcoes = [],
 }: EscolhaSeuCaminhoProps) {
   return (
     <section className="fz-router" aria-label={titulo}>

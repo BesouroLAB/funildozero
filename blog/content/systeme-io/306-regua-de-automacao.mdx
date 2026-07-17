@@ -1,0 +1,115 @@
+---
+title: "Régua de automação de e-mails na Systeme.io (com tags)"
+description: "Do gatilho ao último e-mail: monte a sequência automática que entrega a isca e nutre o lead, com tags de segmentação — passo a passo, no plano gratuito."
+slug: "regua-de-automacao"
+silo: "systeme-io"
+siloLabel: "Systeme.io"
+date: "2026-07-16"
+updatedAt: "2026-07-16"
+tipo: "tutorial"
+schema: "HowTo"
+faq:
+  - q: "Automação e e-mail marketing são gratuitos na Systeme.io?"
+    a: "Sim. O plano gratuito inclui regras de automação, campanhas de e-mail, tags e envio de e-mails para até 2.000 contatos — sem cartão de crédito. Você só migra para um plano pago ao ultrapassar esse limite de contatos ou precisar de recursos avançados."
+  - q: "Qual a diferença entre uma \"regra\" e um \"fluxo de trabalho\"?"
+    a: "A regra é uma automação simples de gatilho e ação (\"quando se inscrever, envie a campanha\") — perfeita para começar. O fluxo de trabalho é um construtor visual de múltiplas etapas, com esperas e caminhos condicionais (por exemplo: se comprou, siga por aqui; se não comprou, por ali). Comece pelas regras e migre para fluxos quando precisar de ramificações."
+  - q: "Quantos e-mails minha régua deve ter?"
+    a: "Cinco é um ponto de partida sólido para uma isca de captura (entrega, aprofundamento, prova, ponte e convite). O número ideal depende do seu ciclo de venda: produtos simples pedem sequências curtas; ofertas de ticket alto ou nichos que exigem confiança pedem réguas mais longas. Comece com cinco e ajuste pelos resultados."
+---
+**Ao final deste tutorial você terá:** uma régua automática que dispara sozinha quando alguém se cadastra na sua página de captura — entregando a isca, nutrindo o lead com uma sequência de e-mails e marcando cada contato com tags de origem e engajamento. Tempo estimado: **45 minutos**. Custo: **zero** — automações, e-mails e tags estão inclusos no plano gratuito da Systeme.io (até 2.000 contatos).
+
+## Antes de começar
+
+Você vai precisar de uma [conta gratuita na Systeme.io](/go/systeme?ref=regua-de-automacao), da sua **página de captura já publicada** (se ainda não tem, veja [como criar sua página de captura](/systeme-io/como-criar-pagina-de-captura) primeiro) e dos **textos dos seus e-mails escritos** — a ferramenta automatiza o envio, mas o conteúdo é seu. Se você trava na hora de escrever, o [guia de copywriting](/copywriting-vendas/o-que-e-copywriting) ajuda a estruturar as mensagens.
+
+> **Regras ou Fluxos de trabalho?** A Systeme.io tem duas ferramentas de automação. As **Regras** são gatilhos simples do tipo "se isso, então aquilo" (ideais para começar). Os **Fluxos de trabalho** são sequências visuais de múltiplas etapas com esperas e ramificações (para cenários mais complexos). Este tutorial usa Regras + uma campanha de e-mails, que é o suficiente para a maioria das réguas — e menciona o fluxo de trabalho no fim, para quando você crescer.
+
+## O passo a passo
+
+### 1. Crie a tag de origem primeiro
+
+Antes da automação, crie a etiqueta que vai identificar de onde o lead veio. No menu, acesse **CRM → Tags → Criar**, dê um nome claro que combine isca e nicho (ex.: `isca-checklist-coach`) e salve. Essa tag é o que vai permitir, mais tarde, medir qual isca traz os melhores leads e disparar a régua certa para cada público.
+
+*Print sugerido: tela de criação de tag no CRM — alt: "como criar tag de contato na Systeme.io".*
+
+### 2. Crie a campanha de e-mails (a sequência em si)
+
+Uma campanha é o conjunto de e-mails que serão enviados em sequência. No menu, acesse **E-mails → Campanhas → Criar**, dê um nome (ex.: "Nutrição — checklist coach") e adicione os e-mails um a um, definindo o **atraso de cada um em relação ao anterior**. Uma régua de nutrição eficiente costuma ter cinco e-mails, espaçados assim:
+
+- **E-mail 1 (imediato):** a entrega — "seu material chegou" + o link/anexo da isca + uma instrução clara do primeiro passo.
+- **E-mail 2 (após 2 dias):** aprofundamento — desenvolva o tema da isca, mostre que existe mais.
+- **E-mail 3 (após 3 dias):** prova — um caso real com contexto (sem promessa de resultado).
+- **E-mail 4 (após 3 dias):** a ponte — conecte o problema à sua oferta.
+- **E-mail 5 (após 4 dias):** o convite — a oferta com um prazo ou condição reais.
+
+Escreva cada e-mail no editor, com um assunto que dê vontade de abrir e um único call to action por mensagem. Você pode **anexar a isca em PDF** diretamente no primeiro e-mail.
+
+*Print sugerido: editor de campanha com a lista de e-mails e os atrasos — alt: "como criar sequência de e-mails na Systeme.io".*
+
+### 3. Crie a regra de automação
+
+Agora o gatilho que liga tudo. No menu, acesse **Automações → Regras → Criar**. A tela tem duas colunas: **Gatilho** (quando disparar) e **Ação** (o que fazer).
+
+No **Gatilho**, clique no "+" e escolha **"Inscrito na etapa de formulário do funil"** — depois selecione a sua página de captura. É isso que faz a régua começar no exato momento em que alguém preenche o formulário.
+
+*Print sugerido: tela da regra com o gatilho de formulário selecionado — alt: "gatilho de inscrição em formulário na Systeme.io".*
+
+### 4. Adicione as ações (tag + sequência)
+
+Na coluna **Ação**, clique no "+" e adicione **duas ações**, nesta ordem:
+
+1. **"Adicionar uma tag"** → selecione a tag que você criou no passo 1 (`isca-checklist-coach`). Agora todo lead que entrar por essa página fica marcado.
+2. **"Inscrever em campanha"** → selecione a campanha de e-mails do passo 2. É isso que inicia a sequência.
+
+Clique em **Salvar regra**. A partir de agora, cada novo cadastro é etiquetado e recebe a sequência inteira, sozinho.
+
+*Print sugerido: coluna de ações com "Adicionar tag" e "Inscrever em campanha" — alt: "ações de automação na Systeme.io".*
+
+### 5. Teste a régua de ponta a ponta
+
+Abra sua página de captura em uma aba anônima e faça um cadastro real com um e-mail seu. Confira: o e-mail 1 chegou em poucos minutos? O contato apareceu no CRM **com a tag certa**? Ele está inscrito na campanha (dá para ver na ficha do contato)? Só ative a divulgação depois desse teste — uma régua quebrada perde o lead no momento de maior interesse.
+
+## As tags de engajamento (o nível seguinte)
+
+A tag de origem diz de ONDE o lead veio; as tags de engajamento dizem o QUANTO ele está interessado — e é aí que a mágica da segmentação acontece. Crie regras extras com gatilhos como **"E-mail aberto"** ou **"Link clicado"** para adicionar tags do tipo `lead-quente`. Depois, você pode fazer uma oferta antecipada só para quem está quente, ou uma régua de reengajamento para quem esfriou. É o mesmo princípio da [régua de reposição do e-commerce](/funil-de-vendas/e-commerce) e da [régua anti-churn do personal trainer](/funil-de-vendas/personal-trainer): a ferramenta trata cada contato conforme o comportamento dele.
+
+## Dois detalhes que evitam dor de cabeça
+
+**O limite de disparos:** um mesmo gatilho dispara no máximo 20 vezes por contato — mais que suficiente para uma régua normal, mas bom saber se você criar automações que se repetem. **Editar atrasos não afeta quem já está na fila:** se você mudar o atraso de um e-mail de 3 para 7 dias, quem já estava esperando completa o prazo original; o novo valor só vale para quem entrar depois. Planeje os atrasos antes de divulgar.
+
+## Onde essa régua se encaixa no seu funil
+
+A régua de automação é o coração do meio do funil — é ela que transforma um lead capturado em cliente, no tempo dele, sem você mexer um dedo depois de montada. A sequência ideal (quantos e-mails, com que tom, qual oferta no fim) muda por nicho: o [coach](/funil-de-vendas/coach) nutre com sobriedade rumo a uma sessão de triagem; o [lançador](/funil-de-vendas/lancador-infoprodutor) aquece para a abertura de carrinho; o [mentor](/funil-de-vendas/mentor) conduz a uma aplicação. Veja a régua exata do seu ofício no guia da sua profissão.
+
+O passo seguinte, quando a régua termina em venda, é a página que recebe o clique de compra: a página de vendas.
+
+<TutorialBox slug="como-criar-pagina-de-vendas" titulo="Próximo passo: como criar sua página de vendas" />
+
+## Perguntas frequentes
+
+<details className="fz-faq__item">
+<summary className="fz-faq__q">Automação e e-mail marketing são gratuitos na Systeme.io?</summary>
+<div className="fz-faq__a">Sim. O plano gratuito inclui regras de automação, campanhas de e-mail, tags e envio de e-mails para até 2.000 contatos — sem cartão de crédito. Você só migra para um plano pago ao ultrapassar esse limite de contatos ou precisar de recursos avançados.</div>
+</details>
+
+<details className="fz-faq__item">
+<summary className="fz-faq__q">Qual a diferença entre uma "regra" e um "fluxo de trabalho"?</summary>
+<div className="fz-faq__a">A regra é uma automação simples de gatilho e ação ("quando se inscrever, envie a campanha") — perfeita para começar. O fluxo de trabalho é um construtor visual de múltiplas etapas, com esperas e caminhos condicionais (por exemplo: se comprou, siga por aqui; se não comprou, por ali). Comece pelas regras e migre para fluxos quando precisar de ramificações.</div>
+</details>
+
+<details className="fz-faq__item">
+<summary className="fz-faq__q">Quantos e-mails minha régua deve ter?</summary>
+<div className="fz-faq__a">Cinco é um ponto de partida sólido para uma isca de captura (entrega, aprofundamento, prova, ponte e convite). O número ideal depende do seu ciclo de venda: produtos simples pedem sequências curtas; ofertas de ticket alto ou nichos que exigem confiança pedem réguas mais longas. Comece com cinco e ajuste pelos resultados.</div>
+</details>
+
+<CTAGo slug="regua-de-automacao" titulo="Monte sua régua de automação agora" reforco="E-mails, tags e automação no mesmo painel. Plano gratuito da Systeme.io, sem cartão." rotulo="Criar minha conta grátis" />
+
+<LeiaTambem artigos={[
+  { slug: "coach", titulo: "Funil de vendas para coaches (a régua de nutrição sóbria)" },
+  { slug: "lancador-infoprodutor", titulo: "Funil de vendas para lançadores (a régua de aquecimento)" },
+  { slug: "e-commerce", titulo: "Funil de vendas para e-commerce (a régua de reposição)" },
+]} />
+
+---
+
+*Changelog: publicado em 16 de julho de 2026. Passos e nomenclatura (Automações → Regras, gatilho "Inscrito na etapa de formulário do funil", ações "Adicionar tag" e "Inscrever em campanha") conferidos na central de ajuda oficial em português da Systeme.io — os rótulos de menu podem variar com atualizações; revisar ao capturar os prints.*

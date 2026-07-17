@@ -33,6 +33,13 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
   const fontes = frontmatter.fontes ?? [];
   const refBase = `${frontmatter.silo}-${frontmatter.slug}`;
 
+  // Artigos no formato novo (gabaritos do design system) trazem os próprios
+  // CTAs (<CTAGo>) e a seção de FAQ em prosa no corpo — nesses casos o
+  // template não injeta os seus, para não duplicar. O schema FAQPage continua
+  // vindo do frontmatter em ambos os formatos.
+  const temCtaProprio = content.includes("<CTAGo");
+  const temFaqNoCorpo = content.includes("## Perguntas frequentes");
+
   const schema = [
     breadcrumbSchema([
       { name: "Início", url: "/" },
@@ -104,11 +111,13 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
           <p className="text-[#0B132B]/90">{frontmatter.description}</p>
         </section>
 
-        <AffiliateCTA
-          refId={`${refBase}-topo`}
-          variante="topo"
-          descricao="Quer montar sua estrutura sem pagar mensalidade?"
-        />
+        {!temCtaProprio && (
+          <AffiliateCTA
+            refId={`${refBase}-topo`}
+            variante="topo"
+            descricao="Quer montar sua estrutura sem pagar mensalidade?"
+          />
+        )}
 
         {/* Corpo do artigo em MDX */}
         <div className="prose-fdz mt-8">
@@ -116,6 +125,10 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
             source={content}
             components={mdxComponents}
             options={{
+              // Conteúdo 1ª parte (repo): libera expressões JSX nos atributos
+              // (arrays/objetos dos componentes); chamadas perigosas continuam
+              // bloqueadas pelo blockDangerousJS default.
+              blockJS: false,
               mdxOptions: {
                 rehypePlugins: [rehypeSlug],
               },
@@ -123,8 +136,8 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
           />
         </div>
 
-        {/* FAQ visível */}
-        {faq.length > 0 && (
+        {/* FAQ visível (omitida quando o corpo já traz a seção em prosa) */}
+        {faq.length > 0 && !temFaqNoCorpo && (
           <section className="mt-12">
             <h2 className="mb-4 text-2xl font-bold text-[#0B132B]">
               Perguntas frequentes
@@ -140,11 +153,13 @@ export function ArticleTemplate({ article }: ArticleTemplateProps) {
           </section>
         )}
 
-        <AffiliateCTA
-          refId={`${refBase}-fundo`}
-          variante="fundo"
-          descricao="Monte tudo numa só plataforma — página, e-mail e checkout — de graça, para sempre."
-        />
+        {!temCtaProprio && (
+          <AffiliateCTA
+            refId={`${refBase}-fundo`}
+            variante="fundo"
+            descricao="Monte tudo numa só plataforma — página, e-mail e checkout — de graça, para sempre."
+          />
+        )}
 
         {/* Fontes externas — embasam os dados citados no artigo (E-E-A-T) */}
         {fontes.length > 0 && (

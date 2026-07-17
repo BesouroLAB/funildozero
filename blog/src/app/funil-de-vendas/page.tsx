@@ -40,14 +40,14 @@ const FAQ = [
 ];
 
 export const metadata: Metadata = {
-  title: "Funil de Vendas: O Guia Completo do Zero (2026)",
+  title: "Funil de Vendas por Profissão: 32 Guias Práticos (2026)",
   description:
-    "O guia definitivo de funil de vendas: o que é, as etapas (topo, meio e fundo), a isca digital e como montar o seu por profissão — sem pagar mensalidades.",
+    "O funil de vendas do SEU ofício: 32 guias práticos por profissão — da isca digital à automação — com as regras do seu conselho e sem pagar mensalidades.",
   alternates: { canonical: URL_PATH },
   openGraph: {
-    title: "Funil de Vendas: O Guia Completo do Zero (2026)",
+    title: "Funil de Vendas por Profissão: 32 Guias Práticos (2026)",
     description:
-      "O que é um funil de vendas, as 3 etapas e como montar o seu por profissão, sem pagar mensalidades.",
+      "O funil de vendas do seu ofício: 32 guias por profissão, da isca digital à automação, sem pagar mensalidades.",
     url: absoluteUrl(URL_PATH),
     siteName: SITE.name,
     locale: SITE.locale,
@@ -62,9 +62,9 @@ export default function SiloFunilPage() {
       { name: "Funil de Vendas", url: URL_PATH },
     ]),
     articleSchema({
-      headline: "Funil de Vendas: O Guia Completo do Zero (2026)",
+      headline: "Funil de Vendas por Profissão: 32 Guias Práticos (2026)",
       description:
-        "O que é um funil de vendas, as etapas (topo, meio e fundo), a isca digital e como montar o seu por profissão.",
+        "O funil de vendas do seu ofício: 32 guias práticos por profissão, da isca digital à automação.",
       url: URL_PATH,
       datePublished: ATUALIZADO,
       dateModified: ATUALIZADO,
@@ -86,10 +86,10 @@ export default function SiloFunilPage() {
 
         <header>
           <p className="text-sm font-medium uppercase tracking-wide text-[#00B2B2]">
-            Guia Completo
+            Guias por Profissão
           </p>
         <h1 className="mt-2 text-4xl font-bold text-[#0B132B]">
-          Funil de Vendas: O Guia Completo do Zero
+          Funil de Vendas por Profissão: encontre o guia do seu ofício
         </h1>
         <p className="mt-3 text-sm text-[#0B132B]/60">
           Por {SITE.author} · Atualizado em{" "}
