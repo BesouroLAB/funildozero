@@ -89,8 +89,8 @@ export function articleSchema(input: ArticleSchemaInput): JsonLdObject {
     datePublished: published,
     dateModified: input.dateModified ?? published,
     // Referencia as entidades globais via @id para unificar a autoridade
-    author: { "@id": AUTHOR_ID },
-    publisher: { "@id": ORG_ID },
+    author: { "@type": "Person", "@id": AUTHOR_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID },
   };
 }
 
@@ -150,8 +150,8 @@ export function reviewSchema(input: ReviewSchemaInput): JsonLdObject {
         ratingValue: input.ratingValue,
         bestRating: input.bestRating ?? 5,
       },
-      author: { "@id": AUTHOR_ID },
-      publisher: { "@id": ORG_ID },
+      author: { "@type": "Person", "@id": AUTHOR_ID },
+      publisher: { "@type": "Organization", "@id": ORG_ID },
     },
   };
 }
